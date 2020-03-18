@@ -1,4 +1,3 @@
-#include <iostream>
 #include "QueueNode.h"
 
 template<class T>

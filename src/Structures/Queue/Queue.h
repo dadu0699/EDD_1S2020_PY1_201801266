@@ -14,13 +14,9 @@ private:
 
 public:
     Queue();
-
     ~Queue();
-
     void push(T object);
-
     QueueNode<T> *pop();
-
     int getLength();
 };
 
