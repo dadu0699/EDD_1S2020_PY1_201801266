@@ -4,8 +4,8 @@
 template<class T>
 CircularDoubleNode<T>::CircularDoubleNode(T object) {
     this->object = object;
-    nextNode = nullptr;
-    previousNode = nullptr;
+    nextNode = this;
+    previousNode = this;
 }
 
 template<class T>

@@ -19,13 +19,13 @@ int main() {
     circularDoubleList.readStartNodes();
     circularDoubleList.readEndNodes();
 
-    /*circularDoubleList.deleteSpecificNode(2);
+    circularDoubleList.deleteSpecificNode(2);
     circularDoubleList.deleteSpecificNode(5);
     circularDoubleList.readStartNodes();
     circularDoubleList.readEndNodes();
 
     circularDoubleList.updateNode(3, 30);
-    circularDoubleList.readStartNodes();*/
+    circularDoubleList.readStartNodes();
 
     cout << "\n----- Test Double List -----\n";
     DoubleList<int> doubleList;

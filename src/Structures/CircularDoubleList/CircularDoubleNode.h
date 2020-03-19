@@ -18,15 +18,15 @@ public:
     void setNextNode(CircularDoubleNode *nextNode);
 
     CircularDoubleNode *getPreviousNode() const;
-    void setPreviousNode(CircularDoubleNode *nextNode);
+    void setPreviousNode(CircularDoubleNode *previousNode);
 };
 
 
 template<class T>
 CircularDoubleNode<T>::CircularDoubleNode(T object) {
     this->object = object;
-    nextNode = nullptr;
-    previousNode = nullptr;
+    nextNode = this;
+    previousNode = this;
 }
 
 template<class T>
