@@ -2,7 +2,7 @@
 #include "CircularDoubleList.h"
 
 using namespace std;
-
+/*
 template<class T>
 CircularDoubleList<T>::CircularDoubleList() {
     firstNode = nullptr;
@@ -99,4 +99,4 @@ CircularDoubleNode<T> *CircularDoubleList<T>::searchNode(T object) {
         }
     } while (auxiliaryNode != firstNode);
     return nullptr;
-}
+}*/

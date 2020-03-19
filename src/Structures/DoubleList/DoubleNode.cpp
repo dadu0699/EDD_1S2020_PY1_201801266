@@ -1,3 +1,4 @@
+/*
 #include "DoubleNode.h"
 
 template<class T>
@@ -40,3 +41,4 @@ template<class T>
 void DoubleNode<T>::setPreviousNode(DoubleNode *previousNode) {
     this->previousNode = previousNode;
 }
+*/

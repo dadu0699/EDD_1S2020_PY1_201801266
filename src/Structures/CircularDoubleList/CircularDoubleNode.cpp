@@ -1,3 +1,4 @@
+/*
 #include "CircularDoubleNode.h"
 
 template<class T>
@@ -39,4 +40,4 @@ typename CircularDoubleNode<T>::CircularDoubleNode* CircularDoubleNode<T>::getPr
 template<class T>
 void CircularDoubleNode<T>::setPreviousNode(CircularDoubleNode *previousNode) {
     this->previousNode = previousNode;
-}
+}*/

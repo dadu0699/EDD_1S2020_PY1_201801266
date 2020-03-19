@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include "SimpleList.h"
 
@@ -128,3 +129,4 @@ void SimpleList<T>::sortList() {
         }
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include "DoubleList.h"
 
@@ -128,3 +129,4 @@ DoubleNode<T> *DoubleList<T>::searchNode(T object) {
     }
     return auxiliaryNode;
 }
+*/

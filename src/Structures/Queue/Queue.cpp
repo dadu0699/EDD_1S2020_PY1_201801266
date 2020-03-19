@@ -1,3 +1,4 @@
+/*
 #include "Queue.h"
 
 template<class T>
@@ -44,3 +45,4 @@ int Queue<T>::getLength() {
     return length;
 }
 
+*/

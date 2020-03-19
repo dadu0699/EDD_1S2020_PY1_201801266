@@ -1,4 +1,5 @@
 #include "QueueNode.h"
+/*
 
 template<class T>
 QueueNode<T>::QueueNode(T object) {
@@ -28,4 +29,4 @@ typename QueueNode<T>::QueueNode* QueueNode<T>::getNextNode() const {
 template<class T>
 void QueueNode<T>::setNextNode(QueueNode *nextNode) {
     this->nextNode = nextNode;
-}
+}*/

@@ -1,4 +1,4 @@
-#include "SimpleNode.h"
+/*#include "SimpleNode.h"
 
 template<class T>
 SimpleNode<T>::SimpleNode(T object) {
@@ -28,4 +28,4 @@ typename SimpleNode<T>::SimpleNode* SimpleNode<T>::getNextNode() const {
 template<class T>
 void SimpleNode<T>::setNextNode(SimpleNode *nextNode) {
     this->nextNode = nextNode;
-}
+}*/
