@@ -1,26 +1,26 @@
 /*
 #include <iostream>
-#include "DoubleList.h"
+#include "DoublyLinkedList.h"
 
 using namespace std;
 
 template<class T>
-DoubleList<T>::DoubleList() {
+DoublyLinkedList<T>::DoublyLinkedList() {
     firstNode = nullptr;
     lastNode = nullptr;
 }
 
 template<class T>
-DoubleList<T>::~DoubleList() {
+DoublyLinkedList<T>::~DoublyLinkedList() {
 }
 
 template<class T>
-bool DoubleList<T>::isEmpty() {
+bool DoublyLinkedList<T>::isEmpty() {
     return firstNode == nullptr;
 }
 
 template<class T>
-void DoubleList<T>::addFirstNode(T object) {
+void DoublyLinkedList<T>::addFirstNode(T object) {
     DoubleNode<T> *node = new DoubleNode<T>(object);
     if (isEmpty())
     {
@@ -35,7 +35,7 @@ void DoubleList<T>::addFirstNode(T object) {
 }
 
 template<class T>
-void DoubleList<T>::addLastNode(T object) {
+void DoublyLinkedList<T>::addLastNode(T object) {
     DoubleNode<T> *node = new DoubleNode<T>(object);
     if (isEmpty())
     {
@@ -50,7 +50,7 @@ void DoubleList<T>::addLastNode(T object) {
 }
 
 template<class T>
-void DoubleList<T>::readStartNodes() {
+void DoublyLinkedList<T>::readStartNodes() {
     DoubleNode<T> *auxiliaryNode = firstNode;
     while (auxiliaryNode != nullptr)
     {
@@ -61,7 +61,7 @@ void DoubleList<T>::readStartNodes() {
 }
 
 template<class T>
-void DoubleList<T>::readEndNodes() {
+void DoublyLinkedList<T>::readEndNodes() {
     DoubleNode<T> *auxiliaryNode = lastNode;
     while (auxiliaryNode != nullptr)
     {
@@ -72,7 +72,7 @@ void DoubleList<T>::readEndNodes() {
 }
 
 template<class T>
-void DoubleList<T>::updateNode(T oldObject, T newObject) {
+void DoublyLinkedList<T>::updateNode(T oldObject, T newObject) {
     DoubleNode<T> *node = searchNode(oldObject);
     if (node != nullptr) {
         node->setObject(newObject);
@@ -80,7 +80,7 @@ void DoubleList<T>::updateNode(T oldObject, T newObject) {
 }
 
 template<class T>
-void DoubleList<T>::deleteFirstNode() {
+void DoublyLinkedList<T>::deleteFirstNode() {
     if (!isEmpty()) {
         firstNode = firstNode->getNextNode();
         firstNode->setPreviousNode(nullptr);
@@ -88,7 +88,7 @@ void DoubleList<T>::deleteFirstNode() {
 }
 
 template<class T>
-void DoubleList<T>::deleteLastNode() {
+void DoublyLinkedList<T>::deleteLastNode() {
     if (!isEmpty()) {
         DoubleNode<T> *auxiliaryNode = firstNode;
         while (auxiliaryNode->getNextNode() != lastNode) {
@@ -100,7 +100,7 @@ void DoubleList<T>::deleteLastNode() {
 }
 
 template<class T>
-void DoubleList<T>::deleteSpecificNode(T object) {
+void DoublyLinkedList<T>::deleteSpecificNode(T object) {
     if (!isEmpty()) {
         if (firstNode == lastNode && object == firstNode->getObject()) {
             firstNode = nullptr;
@@ -122,7 +122,7 @@ void DoubleList<T>::deleteSpecificNode(T object) {
 }
 
 template<class T>
-DoubleNode<T> *DoubleList<T>::searchNode(T object) {
+DoubleNode<T> *DoublyLinkedList<T>::searchNode(T object) {
     DoubleNode<T> *auxiliaryNode = firstNode;
     while (auxiliaryNode != nullptr && auxiliaryNode->getObject() != object) {
         auxiliaryNode = auxiliaryNode->getNextNode();

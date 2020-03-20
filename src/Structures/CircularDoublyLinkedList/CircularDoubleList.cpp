@@ -1,24 +1,24 @@
 /*#include <iostream>
-#include "CircularDoubleList.h"
+#include "Circular DoublyLinkedList.h"
 
 using namespace std;
 
 template<class T>
-CircularDoubleList<T>::CircularDoubleList() {
+Circular DoublyLinkedList<T>::Circular DoublyLinkedList() {
     firstNode = nullptr;
 }
 
 template<class T>
-CircularDoubleList<T>::~CircularDoubleList() {
+Circular DoublyLinkedList<T>::~Circular DoublyLinkedList() {
 }
 
 template<class T>
-bool CircularDoubleList<T>::isEmpty() {
+bool Circular DoublyLinkedList<T>::isEmpty() {
     return firstNode == nullptr;
 }
 
 template<class T>
-void CircularDoubleList<T>::addNode(T object) {
+void Circular DoublyLinkedList<T>::addNode(T object) {
     CircularDoubleNode<T> *newNode = new CircularDoubleNode<T>(object);
     CircularDoubleNode<T> *lastNode = getLastNode();
 
@@ -35,7 +35,7 @@ void CircularDoubleList<T>::addNode(T object) {
 }
 
 template<class T>
-void CircularDoubleList<T>::readStartNodes() {
+void Circular DoublyLinkedList<T>::readStartNodes() {
     if (!isEmpty()) {
         CircularDoubleNode<T> *auxiliaryNode = firstNode->getNextNode();
         do {
@@ -49,7 +49,7 @@ void CircularDoubleList<T>::readStartNodes() {
 }
 
 template<class T>
-void CircularDoubleList<T>::readEndNodes() {
+void Circular DoublyLinkedList<T>::readEndNodes() {
     if (!isEmpty()) {
         CircularDoubleNode<T> *auxiliaryNode = getLastNode();
         do {
@@ -63,7 +63,7 @@ void CircularDoubleList<T>::readEndNodes() {
 }
 
 template<class T>
-void CircularDoubleList<T>::updateNode(T oldObject, T newObject) {
+void Circular DoublyLinkedList<T>::updateNode(T oldObject, T newObject) {
     CircularDoubleNode<T> *node = searchNode(oldObject);
     if (node != nullptr) {
         node->setObject(newObject);
@@ -71,7 +71,7 @@ void CircularDoubleList<T>::updateNode(T oldObject, T newObject) {
 }
 
 template<class T>
-void CircularDoubleList<T>::deleteSpecificNode(T object) {
+void Circular DoublyLinkedList<T>::deleteSpecificNode(T object) {
     if (!isEmpty()) {
         CircularDoubleNode<T> *auxiliaryNode = searchNode(object);
         if (auxiliaryNode != nullptr) {
@@ -94,7 +94,7 @@ void CircularDoubleList<T>::deleteSpecificNode(T object) {
 }
 
 template<class T>
-CircularDoubleNode<T> *CircularDoubleList<T>::searchNode(T object) {
+CircularDoubleNode<T> *Circular DoublyLinkedList<T>::searchNode(T object) {
     CircularDoubleNode<T> *auxiliaryNode = firstNode;
     do {
         if (auxiliaryNode->getObject() == object) {
@@ -107,7 +107,7 @@ CircularDoubleNode<T> *CircularDoubleList<T>::searchNode(T object) {
 }
 
 template<class T>
-CircularDoubleNode<T> *CircularDoubleList<T>::getLastNode() {
+CircularDoubleNode<T> *Circular DoublyLinkedList<T>::getLastNode() {
     CircularDoubleNode<T> *lastNode = firstNode;
     if (firstNode != nullptr) {
         do {

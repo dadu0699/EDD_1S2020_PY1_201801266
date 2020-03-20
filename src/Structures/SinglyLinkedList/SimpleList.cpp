@@ -1,26 +1,26 @@
 /*
 #include <iostream>
-#include "SimpleList.h"
+#include "SinglyLinkedList.h"
 
 using namespace std;
 
 template<class T>
-SimpleList<T>::SimpleList() {
+SinglyLinkedList<T>::SinglyLinkedList() {
     firstNode = nullptr;
     lastNode = nullptr;
 }
 
 template<class T>
-SimpleList<T>::~SimpleList() {
+SinglyLinkedList<T>::~SinglyLinkedList() {
 }
 
 template<class T>
-bool SimpleList<T>::isEmpty() {
+bool SinglyLinkedList<T>::isEmpty() {
     return firstNode == nullptr;
 }
 
 template<class T>
-void SimpleList<T>::addFirstNode(T object) {
+void SinglyLinkedList<T>::addFirstNode(T object) {
     SimpleNode<T> *node = new SimpleNode<T>(object);
     if (isEmpty()) {
         lastNode = node;
@@ -31,7 +31,7 @@ void SimpleList<T>::addFirstNode(T object) {
 }
 
 template<class T>
-void SimpleList<T>::addLastNode(T object) {
+void SinglyLinkedList<T>::addLastNode(T object) {
     SimpleNode<T> *node = new SimpleNode<T>(object);
     if (isEmpty()) {
         firstNode = node;
@@ -42,7 +42,7 @@ void SimpleList<T>::addLastNode(T object) {
 }
 
 template<class T>
-void SimpleList<T>::readNodes() {
+void SinglyLinkedList<T>::readNodes() {
     SimpleNode<T> *auxiliaryNode = firstNode;
     while (auxiliaryNode != nullptr) {
         cout << auxiliaryNode->getObject() << " --> ";
@@ -52,7 +52,7 @@ void SimpleList<T>::readNodes() {
 }
 
 template<class T>
-void SimpleList<T>::updateNode(T oldObject, T newObject) {
+void SinglyLinkedList<T>::updateNode(T oldObject, T newObject) {
     SimpleNode<T> *node = searchNode(oldObject);
     if (node != nullptr) {
         node->setObject(newObject);
@@ -60,14 +60,14 @@ void SimpleList<T>::updateNode(T oldObject, T newObject) {
 }
 
 template<class T>
-void SimpleList<T>::deleteFirstNode() {
+void SinglyLinkedList<T>::deleteFirstNode() {
     if (!isEmpty()) {
         firstNode = firstNode->getNextNode();
     }
 }
 
 template<class T>
-void SimpleList<T>::deleteLastNode() {
+void SinglyLinkedList<T>::deleteLastNode() {
     if (!isEmpty()) {
         SimpleNode<T> *auxiliaryNode = firstNode;
         while (auxiliaryNode->getNextNode() != lastNode) {
@@ -79,7 +79,7 @@ void SimpleList<T>::deleteLastNode() {
 }
 
 template<class T>
-void SimpleList<T>::deleteSpecificNode(T object) {
+void SinglyLinkedList<T>::deleteSpecificNode(T object) {
     if (!isEmpty()) {
         if (firstNode == lastNode && object == firstNode->getObject()) {
             firstNode = nullptr;
@@ -100,7 +100,7 @@ void SimpleList<T>::deleteSpecificNode(T object) {
 }
 
 template<class T>
-SimpleNode<T> *SimpleList<T>::searchNode(T object) {
+SimpleNode<T> *SinglyLinkedList<T>::searchNode(T object) {
     SimpleNode<T> *auxiliaryNode = firstNode;
     while (auxiliaryNode != nullptr && auxiliaryNode->getObject() != object) {
         auxiliaryNode = auxiliaryNode->getNextNode();
@@ -109,7 +109,7 @@ SimpleNode<T> *SimpleList<T>::searchNode(T object) {
 }
 
 template<class T>
-void SimpleList<T>::sortList() {
+void SinglyLinkedList<T>::sortList() {
     SimpleNode<T> *current = firstNode;
     SimpleNode<T> *index;
     T temp;
