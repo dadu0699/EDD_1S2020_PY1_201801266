@@ -6,9 +6,11 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(Scrabble__ src/main.cpp
         src/Structures/Queue/QueueNode.cpp src/Structures/Queue/QueueNode.h
         src/Structures/Queue/Queue.cpp src/Structures/Queue/Queue.h
-        src/Structures/CircularDoubleList/CircularDoubleNode.cpp src/Structures/CircularDoubleList/CircularDoubleNode.h
-        src/Structures/CircularDoubleList/CircularDoubleList.cpp src/Structures/CircularDoubleList/CircularDoubleList.h
-        src/Structures/SimpleList/SimpleNode.cpp src/Structures/SimpleList/SimpleNode.h
-        src/Structures/SimpleList/SimpleList.cpp src/Structures/SimpleList/SimpleList.h
-        src/Structures/DoubleList/DoubleNode.cpp src/Structures/DoubleList/DoubleNode.h
-        src/Structures/DoubleList/DoubleList.cpp src/Structures/DoubleList/DoubleList.h)
+        "src/Structures/CircularDoublyLinkedList/CircularDoubleNode.cpp" "src/Structures/CircularDoublyLinkedList/CircularDoubleNode.h"
+        "src/Structures/CircularDoublyLinkedList/CircularDoubleList.cpp" "src/Structures/CircularDoublyLinkedList/CircularDoubleList.h"
+        src/Structures/SinglyLinkedList/SimpleNode.cpp src/Structures/SinglyLinkedList/SimpleNode.h
+        src/Structures/SinglyLinkedList/SimpleList.cpp src/Structures/SinglyLinkedList/SimpleList.h
+        "src/Structures/DoublyLinkedList/DoubleNode.cpp" "src/Structures/DoublyLinkedList/DoubleNode.h"
+        "src/Structures/DoublyLinkedList/DoubleList.cpp" "src/Structures/DoublyLinkedList/DoubleList.h"
+        "src/Structures/SparseMatrix/SparseMatrixNode.cpp" "src/Structures/SparseMatrix/SparseMatrixNode.h"
+        src/Structures/SparseMatrix/SparseMatrix.cpp src/Structures/SparseMatrix/SparseMatrix.h)
