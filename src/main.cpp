@@ -17,15 +17,8 @@ int main() {
     sparseMatrix.addNode(4,3,43);
     sparseMatrix.addNode(2,7,27);
     sparseMatrix.addNode(1,1,11);
+    sparseMatrix.report();
 
-    cout << endl << "Encabezados Columnas" << endl;
-    sparseMatrix.printHeadersC();
-    cout << endl << "Encabezados Filas" << endl;
-    sparseMatrix.printHeadersR();
-    cout << endl << "Datos Columnas" << endl;
-    sparseMatrix.printColumns();
-    cout << endl << "Datos Filas" << endl;
-    sparseMatrix.printRows();
     // system("pause");
     return 0;
 }
