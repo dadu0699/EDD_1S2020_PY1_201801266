@@ -13,4 +13,4 @@ add_executable(Scrabble__ src/main.cpp
         "src/Structures/DoublyLinkedList/DoubleNode.cpp" "src/Structures/DoublyLinkedList/DoubleNode.h"
         "src/Structures/DoublyLinkedList/DoubleList.cpp" "src/Structures/DoublyLinkedList/DoubleList.h"
         "src/Structures/SparseMatrix/SparseMatrixNode.cpp" "src/Structures/SparseMatrix/SparseMatrixNode.h"
-        src/Structures/SparseMatrix/SparseMatrix.cpp src/Structures/SparseMatrix/SparseMatrix.h)
+        src/Structures/SparseMatrix/SparseMatrix.cpp src/Structures/SparseMatrix/SparseMatrix.h src/Structures/BinarySearchTree/BinarySearchTreeNode.cpp src/Structures/BinarySearchTree/BinarySearchTreeNode.h)

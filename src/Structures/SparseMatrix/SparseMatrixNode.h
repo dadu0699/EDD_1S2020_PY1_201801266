@@ -12,6 +12,7 @@ private:
     SparseMatrixNode *upNode;
     SparseMatrixNode *downNode;
 public:
+    SparseMatrixNode(int x, int y);
     SparseMatrixNode(int x, int y, T object);
     ~SparseMatrixNode();
 
@@ -39,10 +40,20 @@ public:
 
 
 template<class T>
-SparseMatrixNode<T>::SparseMatrixNode(int x, int y, T object) {
-    this->object = object;
+SparseMatrixNode<T>::SparseMatrixNode(int x, int y) {
     this->x = x;
     this->y = y;
+    nextNode = nullptr;
+    previousNode = nullptr;
+    upNode = nullptr;
+    downNode = nullptr;
+}
+
+template<class T>
+SparseMatrixNode<T>::SparseMatrixNode(int x, int y, T object) {
+    this->x = x;
+    this->y = y;
+    this->object = object;
     nextNode = nullptr;
     previousNode = nullptr;
     upNode = nullptr;
