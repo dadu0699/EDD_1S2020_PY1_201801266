@@ -18,18 +18,19 @@ int main() {
     sparseMatrix.addNode(4, 3, "c");
     sparseMatrix.addNode(2, 7, "ñ");
     sparseMatrix.addNode(1, 1, "11");
-    // sparseMatrix.report();
+    sparseMatrix.report();
 
 
-    BinarySearchTree<int> binarySearchTree;
-    binarySearchTree.addNode(60);
-    binarySearchTree.addNode(30);
-    binarySearchTree.addNode(70);
-    binarySearchTree.addNode(10);
-    binarySearchTree.addNode(20);
-    binarySearchTree.addNode(40);
-    binarySearchTree.addNode(80);
-    binarySearchTree.addNode(50);
+    BinarySearchTree<string> binarySearchTree;
+    binarySearchTree.addNode("H");
+    binarySearchTree.addNode("C");
+    binarySearchTree.addNode("J");
+    binarySearchTree.addNode("A");
+    binarySearchTree.addNode("F");
+    binarySearchTree.addNode("M");
+    binarySearchTree.addNode("N");
+    binarySearchTree.addNode("E");
+    binarySearchTree.addNode("G");
     binarySearchTree.report();
 
     // system("pause");

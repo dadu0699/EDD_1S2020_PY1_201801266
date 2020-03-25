@@ -80,7 +80,7 @@ string BinarySearchTree<T>::printBinarySearchTree(BinarySearchTreeNode<T>* root)
 	string myfile;
 	if (!isEmpty()) {
 		int indexParentNode = indexNode;
-		myfile.append("N" + to_string(indexNode) + "[label = \"" + to_string(root->getObject()) + "\"]; ");
+		myfile.append("N" + to_string(indexNode) + "[label = \"" + root->getObject() + "\"]; ");
 
 		if (root->getLeftNode() != nullptr) {
 			indexNode++;

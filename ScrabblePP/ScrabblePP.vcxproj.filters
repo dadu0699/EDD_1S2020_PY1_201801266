@@ -18,42 +18,6 @@
     <ClCompile Include="ScrabblePP.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Structures\CircularDoublyLinkedList\CircularDoubleList.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Structures\CircularDoublyLinkedList\CircularDoubleNode.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Structures\DoublyLinkedList\DoubleList.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Structures\DoublyLinkedList\DoubleNode.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Structures\Queue\Queue.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Structures\Queue\QueueNode.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Structures\SinglyLinkedList\SimpleList.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Structures\SinglyLinkedList\SimpleNode.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Structures\SparseMatrix\SparseMatrix.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Structures\SparseMatrix\SparseMatrixNode.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Structures\BinarySearchTree\BinarySearchTree.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Structures\BinarySearchTree\BinarySearchTreeNode.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Structures\CircularDoublyLinkedList\CircularDoubleList.h">
