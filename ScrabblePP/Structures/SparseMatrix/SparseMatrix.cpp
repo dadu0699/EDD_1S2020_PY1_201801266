@@ -3,7 +3,7 @@
 
 template<class T>
 SparseMatrix<T>::SparseMatrix() {
-    root = new SparseMatrixNode<T>(-1, -1, 0);
+    root = new SparseMatrixNode<T>(-1, -1);
 }
 
 template<class T>
@@ -77,7 +77,7 @@ SparseMatrixNode<T> *SparseMatrix<T>::insertIntoColumn(SparseMatrixNode<T> *node
 template<class T>
 SparseMatrixNode<T> *SparseMatrix<T>::insertIntoRow(SparseMatrixNode<T> *node, SparseMatrixNode<T> *headerColumn) {
     SparseMatrixNode<T> *temp = headerColumn;
-    bool flag = false; // true; // Verify
+    bool flag = false;
 
     while (true) {
         if (temp->getY() == node->getY()) {
@@ -113,14 +113,14 @@ SparseMatrixNode<T> *SparseMatrix<T>::insertIntoRow(SparseMatrixNode<T> *node, S
 template<class T>
 SparseMatrixNode<T> *SparseMatrix<T>::createColumn(int x) {
     SparseMatrixNode<T> *headerColumn = root;
-    SparseMatrixNode<T> *column = insertIntoColumn(new SparseMatrixNode<T>(x, -1, 0), headerColumn);
+    SparseMatrixNode<T> *column = insertIntoColumn(new SparseMatrixNode<T>(x, -1), headerColumn);
     return column;
 }
 
 template<class T>
 SparseMatrixNode<T> *SparseMatrix<T>::createRow(int y) {
     SparseMatrixNode<T> *headerRow = root;
-    SparseMatrixNode<T> *row = insertIntoRow(new SparseMatrixNode<T>(-1, y, 0), headerRow);
+    SparseMatrixNode<T> *row = insertIntoRow(new SparseMatrixNode<T>(-1, y), headerRow);
     return row;
 }
 

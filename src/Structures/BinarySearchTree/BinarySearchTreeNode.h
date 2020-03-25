@@ -1,9 +1,0 @@
-#ifndef SCRABBLE___BINARYSEARCHTREENODE_H
-#define SCRABBLE___BINARYSEARCHTREENODE_H
-
-template <class T>
-class BinarySearchTreeNode {
-
-};
-
-#endif //SCRABBLE___BINARYSEARCHTREENODE_H
