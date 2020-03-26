@@ -30,11 +30,11 @@ public:
 
 	void report();
 
-	void inOrder(BinarySearchTreeNode* root);
+	void reportInOrder();
 
-	void preOrder(BinarySearchTreeNode* root);
-	
-	void postOrder(BinarySearchTreeNode* root);
+	void reportPreOrder();
+
+	void reportPostOrder();
 };
 
 #endif //SCRABBLE___BINARYSEARCHTREE_H

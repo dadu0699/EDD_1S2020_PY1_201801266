@@ -108,14 +108,134 @@ void BinarySearchTree::report()
 	}
 }
 
-string BinarySearchTree::printInOrder(BinarySearchTreeNode* root)
+string BinarySearchTree::printInOrder(BinarySearchTreeNode *root)
 {
 	string myfile;
 	if (root != nullptr)
 	{
 		myfile.append(printInOrder(root->getLeftNode()));
+		indexNode++;
 		myfile.append("N" + to_string(indexNode) + " [label =\"" + root->getName() + "\"];");
 		myfile.append(printInOrder(root->getRightNode()));
 	}
 	return myfile;
+}
+
+string BinarySearchTree::printPreOrder(BinarySearchTreeNode *root)
+{
+	string myfile;
+	if (root != nullptr)
+	{
+		indexNode++;
+		myfile.append("N" + to_string(indexNode) + " [label =\"" + root->getName() + "\"];");
+		myfile.append(printPreOrder(root->getLeftNode()));
+		myfile.append(printPreOrder(root->getRightNode()));
+	}
+	return myfile;
+}
+
+string BinarySearchTree::printPostOrder(BinarySearchTreeNode *root)
+{
+	string myfile;
+	if (root != nullptr)
+	{
+		myfile.append(printPostOrder(root->getLeftNode()));
+		myfile.append(printPostOrder(root->getRightNode()));
+		indexNode++;
+		myfile.append("N" + to_string(indexNode) + " [label =\"" + root->getName() + "\"];");
+	}
+	return myfile;
+}
+
+void BinarySearchTree::reportInOrder()
+{
+	ofstream myfile("inOrder.dot");
+
+	if (myfile.is_open())
+	{
+		if (!isEmpty())
+		{
+			myfile << "digraph G { rankdir = LR;";
+			myfile << "node[shape=record, style=filled fillcolor=cornsilk2];";
+
+			indexNode = -1;
+			myfile << printInOrder(root);
+
+			for (int i = 0; i < indexNode; i++)
+			{
+				myfile << "N" << i << " -> N" << (i + 1) << ";";
+			}
+
+			myfile << " }";
+			myfile.close();
+			system("dot -Tpng inOrder.dot -o inOrder.png");
+			system("inOrder.png");
+		}
+	}
+	else
+	{
+		cout << "Unable to open file";
+	}
+}
+
+void BinarySearchTree::reportPreOrder()
+{
+	ofstream myfile("preOrder.dot");
+
+	if (myfile.is_open())
+	{
+		if (!isEmpty())
+		{
+			myfile << "digraph G { rankdir = LR;";
+			myfile << "node[shape=record, style=filled fillcolor=cornsilk2];";
+
+			indexNode = -1;
+			myfile << printPreOrder(root);
+
+			for (int i = 0; i < indexNode; i++)
+			{
+				myfile << "N" << i << " -> N" << (i + 1) << ";";
+			}
+
+			myfile << " }";
+			myfile.close();
+			system("dot -Tpng preOrder.dot -o preOrder.png");
+			system("preOrder.png");
+		}
+	}
+	else
+	{
+		cout << "Unable to open file";
+	}
+}
+
+void BinarySearchTree::reportPostOrder()
+{
+	ofstream myfile("postOrder.dot");
+
+	if (myfile.is_open())
+	{
+		if (!isEmpty())
+		{
+			myfile << "digraph G { rankdir = LR;";
+			myfile << "node[shape=record, style=filled fillcolor=cornsilk2];";
+
+			indexNode = -1;
+			myfile << printPostOrder(root);
+
+			for (int i = 0; i < indexNode; i++)
+			{
+				myfile << "N" << i << " -> N" << (i + 1) << ";";
+			}
+
+			myfile << " }";
+			myfile.close();
+			system("dot -Tpng postOrder.dot -o postOrder.png");
+			system("postOrder.png");
+		}
+	}
+	else
+	{
+		cout << "Unable to open file";
+	}
 }

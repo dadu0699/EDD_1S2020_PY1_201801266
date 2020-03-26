@@ -25,7 +25,7 @@ bool Queue::isEmpty()
 
 void Queue::push(char letter, int score)
 {
-	QueueNode* node = new QueueNode(letter, score);
+	QueueNode *node = new QueueNode(letter, score);
 	if (isEmpty())
 	{
 		firstNode = node;
@@ -38,11 +38,11 @@ void Queue::push(char letter, int score)
 	length++;
 }
 
-QueueNode* Queue::pop()
+QueueNode *Queue::pop()
 {
 	if (!isEmpty())
 	{
-		QueueNode* node = firstNode;
+		QueueNode *node = firstNode;
 		firstNode = firstNode->getNextNode();
 		length--;
 		return node;
@@ -57,15 +57,15 @@ int Queue::getLength()
 
 void Queue::pushLetter()
 {
-	char letters[] = { 'A', 'A','A','A','A','A','A', 'A','A','A','A','A',
-		'E','E','E','E','E','E','E','E','E','E','E','E',
-		'O','O', 'O', 'O', 'O', 'O', 'O', 'O', 'O',
-		'I','I', 'I', 'I', 'I', 'I', 'S','S', 'S', 'S', 'S', 'S',
-		'N','N', 'N', 'N', 'N', 'R','R', 'R', 'R', 'R',
-		'U','U', 'U', 'U', 'U', 'D','D', 'D', 'D', 'D',
-		'L','L', 'L', 'L', 'T','T', 'T', 'T', 'C', 'C','C', 'C',
-		'G', 'G', 'B','B', 'M', 'M', 'P','P','H','H',
-		'F','V', 'Y', 'Q', 'J', '\u00D1', 'X', 'Z' };
+	char letters[] = {'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A',
+					  'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E',
+					  'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O',
+					  'I', 'I', 'I', 'I', 'I', 'I', 'S', 'S', 'S', 'S', 'S', 'S',
+					  'N', 'N', 'N', 'N', 'N', 'R', 'R', 'R', 'R', 'R',
+					  'U', 'U', 'U', 'U', 'U', 'D', 'D', 'D', 'D', 'D',
+					  'L', 'L', 'L', 'L', 'T', 'T', 'T', 'T', 'C', 'C', 'C', 'C',
+					  'G', 'G', 'B', 'B', 'M', 'M', 'P', 'P', 'H', 'H',
+					  'F', 'V', 'Y', 'Q', 'J', '\u00D1', 'X', 'Z'};
 	int length = sizeof(letters);
 	int index = 0;
 
@@ -152,7 +152,8 @@ void Queue::pushLetter()
 			break;
 		}
 
-		for (int i = index; i < length - 1; ++i) {
+		for (int i = index; i < length - 1; ++i)
+		{
 			letters[i] = letters[i + 1];
 			cout << letters[i] << " ";
 		}
@@ -164,7 +165,7 @@ void Queue::report()
 {
 	if (!isEmpty())
 	{
-		QueueNode* auxiliaryNode = firstNode;
+		QueueNode *auxiliaryNode = firstNode;
 		ofstream myfile("Queue.dot");
 		int index = 0;
 

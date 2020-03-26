@@ -3,12 +3,12 @@
 
 #include "Structures/SparseMatrix/SparseMatrix.h"
 #include "Structures/BinarySearchTree/BinarySearchTree.h"
+#include "Structures/Queue/Queue.h"
 
 using namespace std;
 
 int main() {
-    SparseMatrix sparseMatrix;
-
+    /*SparseMatrix sparseMatrix;
     sparseMatrix.addNode(0, 1, 1,"A");
     sparseMatrix.addNode(1, 3, 2,"d");
     sparseMatrix.addNode(3, 7, 2,"f");
@@ -18,7 +18,7 @@ int main() {
     sparseMatrix.addNode(4, 3, 1,"c");
     sparseMatrix.addNode(2, 7, 2,"ñ");
     sparseMatrix.addNode(1, 1, 3,"11");
-    sparseMatrix.report();
+    sparseMatrix.report();*/
 
 
     BinarySearchTree binarySearchTree;
@@ -35,6 +35,10 @@ int main() {
     binarySearchTree.addNode("Esteban");
     binarySearchTree.addNode("Gatica");
     binarySearchTree.report();
+    binarySearchTree.reportInOrder();
+    binarySearchTree.reportPreOrder();
+    binarySearchTree.reportPostOrder();
+
 
     // system("pause");
     return 0;
