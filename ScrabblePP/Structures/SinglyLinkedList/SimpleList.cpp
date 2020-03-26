@@ -27,6 +27,7 @@ void SimpleList::addFirstNode(int score)
         node->setNextNode(firstNode);
     }
     firstNode = node;
+    sortList();
 }
 
 void SimpleList::addLastNode(int score)
@@ -41,6 +42,7 @@ void SimpleList::addLastNode(int score)
         lastNode->setNextNode(node);
     }
     lastNode = node;
+    sortList();
 }
 
 void SimpleList::readNodes()

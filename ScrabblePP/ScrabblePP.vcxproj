@@ -147,10 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Model\Dictionary.cpp" />
     <ClCompile Include="ScrabblePP.cpp" />
     <ClCompile Include="Structures\BinarySearchTree\BinarySearchTree.cpp" />
     <ClCompile Include="Structures\BinarySearchTree\BinarySearchTreeNode.cpp" />
+    <ClCompile Include="Structures\CircularDoublyLinkedList\CircularDoubleList.cpp" />
+    <ClCompile Include="Structures\CircularDoublyLinkedList\CircularDoubleNode.cpp" />
+    <ClCompile Include="Structures\DoublyLinkedList\DoubleList.cpp" />
+    <ClCompile Include="Structures\DoublyLinkedList\DoubleNode.cpp" />
     <ClCompile Include="Structures\Queue\Queue.cpp" />
     <ClCompile Include="Structures\Queue\QueueNode.cpp" />
     <ClCompile Include="Structures\SinglyLinkedList\SimpleList.cpp" />
@@ -159,7 +162,6 @@
     <ClCompile Include="Structures\SparseMatrix\SparseMatrixNode.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Model\Dictionary.h" />
     <ClInclude Include="Structures\BinarySearchTree\BinarySearchTree.h" />
     <ClInclude Include="Structures\BinarySearchTree\BinarySearchTreeNode.h" />
     <ClInclude Include="Structures\CircularDoublyLinkedList\CircularDoubleList.h" />

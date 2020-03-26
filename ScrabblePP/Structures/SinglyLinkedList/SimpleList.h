@@ -13,6 +13,7 @@ private:
     SimpleNode *lastNode;
 
     bool isEmpty();
+    void sortList();
 
 public:
     SimpleList();
@@ -25,7 +26,6 @@ public:
     void deleteLastNode();
     void deleteSpecificNode(int score);
     SimpleNode *searchNode(int score);
-    void sortList();
 };
 
 #endif //SCRABBLE___SIMPLELIST_H

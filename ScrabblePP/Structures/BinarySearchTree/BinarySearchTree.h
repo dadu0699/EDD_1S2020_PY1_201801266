@@ -23,7 +23,7 @@ public:
 
 	~BinarySearchTree();
 
-	void addNode(string name);
+	bool addNode(string name);
 
 	void report();
 };

@@ -14,7 +14,7 @@ bool BinarySearchTree::isEmpty()
 	return root == nullptr;
 }
 
-void BinarySearchTree::addNode(string name)
+bool BinarySearchTree::addNode(string name)
 {
 	BinarySearchTreeNode *newNode = new BinarySearchTreeNode(name);
 	if (isEmpty())
@@ -35,7 +35,7 @@ void BinarySearchTree::addNode(string name)
 				if (auxiliaryNode == nullptr)
 				{
 					parentNode->setLeftNode(newNode);
-					return;
+					return true;
 				}
 			}
 			else if (name > auxiliaryNode->getName())
@@ -44,12 +44,12 @@ void BinarySearchTree::addNode(string name)
 				if (auxiliaryNode == nullptr)
 				{
 					parentNode->setRightNode(newNode);
-					return;
+					return true;
 				}
 			}
 			else if (name == auxiliaryNode->getName())
 			{
-				return;
+				return false;
 			}
 		}
 	}

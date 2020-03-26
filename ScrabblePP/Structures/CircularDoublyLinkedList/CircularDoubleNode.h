@@ -1,18 +1,23 @@
 #ifndef SCRABBLE___CIRCULARDOUBLENODE_H
 #define SCRABBLE___CIRCULARDOUBLENODE_H
 
-template<class T>
-class CircularDoubleNode {
+#include <iostream>
+
+using namespace std;
+
+class CircularDoubleNode
+{
 private:
-    T object;
+    string word;
     CircularDoubleNode *nextNode;
     CircularDoubleNode *previousNode;
+
 public:
-    CircularDoubleNode(T object);
+    CircularDoubleNode(string word);
     ~CircularDoubleNode();
 
-    T getObject();
-    void setObject(T object);
+    string getWord();
+    void setWord(string word);
 
     CircularDoubleNode *getNextNode() const;
     void setNextNode(CircularDoubleNode *nextNode);
@@ -20,47 +25,5 @@ public:
     CircularDoubleNode *getPreviousNode() const;
     void setPreviousNode(CircularDoubleNode *previousNode);
 };
-
-
-template<class T>
-CircularDoubleNode<T>::CircularDoubleNode(T object) {
-    this->object = object;
-    nextNode = this;
-    previousNode = this;
-}
-
-template<class T>
-CircularDoubleNode<T>::~CircularDoubleNode() {
-}
-
-template<class T>
-T CircularDoubleNode<T>::getObject() {
-    return object;
-}
-
-template<class T>
-void CircularDoubleNode<T>::setObject(T object) {
-    this->object = object;
-}
-
-template<class T>
-typename CircularDoubleNode<T>::CircularDoubleNode* CircularDoubleNode<T>::getNextNode() const {
-    return nextNode;
-}
-
-template<class T>
-void CircularDoubleNode<T>::setNextNode(CircularDoubleNode *nextNode) {
-    this->nextNode = nextNode;
-}
-
-template<class T>
-typename CircularDoubleNode<T>::CircularDoubleNode* CircularDoubleNode<T>::getPreviousNode() const {
-    return previousNode;
-}
-
-template<class T>
-void CircularDoubleNode<T>::setPreviousNode(CircularDoubleNode *previousNode) {
-    this->previousNode = previousNode;
-}
 
 #endif //SCRABBLE___CIRCULARDOUBLENODE_H
