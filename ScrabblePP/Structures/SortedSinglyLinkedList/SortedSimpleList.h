@@ -21,6 +21,7 @@ public:
     void addFirstNode(string name, int score);
     void addLastNode(string name, int score);
     void readNodes();
+    void report();
 };
 
 #endif //SCRABBLE___SORTEDSIMPLELIST_H

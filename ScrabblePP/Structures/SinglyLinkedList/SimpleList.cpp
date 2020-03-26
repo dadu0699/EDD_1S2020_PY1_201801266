@@ -1,4 +1,8 @@
 #include "SimpleList.h"
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 SimpleList::SimpleList()
 {
@@ -139,7 +143,7 @@ void SimpleList::sortList()
             index = current->getNextNode();
             while (index != nullptr)
             {
-                if (current->getScore() > index->getScore())
+                if (current->getScore() < index->getScore())
                 {
                     temp = current->getScore();
                     current->setScore(index->getScore());
@@ -148,6 +152,44 @@ void SimpleList::sortList()
                 index = index->getNextNode();
             }
             current = current->getNextNode();
+        }
+    }
+}
+
+void SimpleList::report()
+{
+    if (!isEmpty())
+    {
+        SimpleNode *auxiliaryNode = firstNode;
+        ofstream myfile("playerScores.dot");
+        int index = 0;
+
+        if (myfile.is_open())
+        {
+            myfile << "digraph G { rankdir = LR;";
+            myfile << "node[shape=record, style=filled fillcolor=cornsilk2];";
+
+            while (auxiliaryNode != nullptr)
+            {
+                myfile << "N" << index << " [label =\"" << auxiliaryNode->getScore() << "\"];";
+                auxiliaryNode = auxiliaryNode->getNextNode();
+                index++;
+            }
+
+            for (int i = 0; i < (index - 1); i++)
+            {
+                myfile << "N" << i << " -> N" << (i + 1) << ";";
+            }
+
+            myfile << "}";
+
+            myfile.close();
+            system("dot -Tpng playerScores.dot -o playerScores.png");
+            system("playerScores.png");
+        }
+        else
+        {
+            cout << "Unable to open file";
         }
     }
 }

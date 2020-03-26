@@ -1,4 +1,8 @@
 #include "SortedSimpleList.h"
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 SortedSimpleList::SortedSimpleList()
 {
@@ -60,7 +64,8 @@ void SortedSimpleList::sortList()
 {
     SortedSimpleNode *current = firstNode;
     SortedSimpleNode *index;
-    int temp;
+    int tempScore;
+    string tempName;
 
     if (!isEmpty())
     {
@@ -69,15 +74,56 @@ void SortedSimpleList::sortList()
             index = current->getNextNode();
             while (index != nullptr)
             {
-                if (current->getScore() > index->getScore())
+                if (current->getScore() < index->getScore())
                 {
-                    temp = current->getScore();
+                    tempScore = current->getScore();
+                    tempName = current->getName();
                     current->setScore(index->getScore());
-                    index->setScore(temp);
+                    current->setName(index->getName());
+                    index->setScore(tempScore);
+                    index->setName(tempName);
                 }
                 index = index->getNextNode();
             }
             current = current->getNextNode();
+        }
+    }
+}
+
+void SortedSimpleList::report()
+{
+    if (!isEmpty())
+    {
+        SortedSimpleNode *auxiliaryNode = firstNode;
+        ofstream myfile("scoreboard.dot");
+        int index = 0;
+
+        if (myfile.is_open())
+        {
+            myfile << "digraph G { rankdir = LR;";
+            myfile << "node[shape=record, style=filled fillcolor=cornsilk2];";
+
+            while (auxiliaryNode != nullptr)
+            {
+                myfile << "N" << index << " [label =\"" << auxiliaryNode->getName() << ", " << auxiliaryNode->getScore() << "\"];";
+                auxiliaryNode = auxiliaryNode->getNextNode();
+                index++;
+            }
+
+            for (int i = 0; i < (index - 1); i++)
+            {
+                myfile << "N" << i << " -> N" << (i + 1) << ";";
+            }
+
+            myfile << "}";
+
+            myfile.close();
+            system("dot -Tpng scoreboard.dot -o scoreboard.png");
+            system("scoreboard.png");
+        }
+        else
+        {
+            cout << "Unable to open file";
         }
     }
 }

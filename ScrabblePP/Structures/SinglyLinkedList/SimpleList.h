@@ -26,6 +26,7 @@ public:
     void deleteLastNode();
     void deleteSpecificNode(int score);
     SimpleNode *searchNode(int score);
+    void report();
 };
 
 #endif //SCRABBLE___SIMPLELIST_H

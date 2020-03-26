@@ -2,6 +2,7 @@
 
 SortedSimpleNode::SortedSimpleNode(string name, int score)
 {
+    this->name = name;
     this->score = score;
     nextNode = nullptr;
 }

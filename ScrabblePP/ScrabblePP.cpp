@@ -3,7 +3,6 @@
 
 #include "Structures/SparseMatrix/SparseMatrix.h"
 #include "Structures/BinarySearchTree/BinarySearchTree.h"
-#include "Structures/Queue/Queue.h"
 
 using namespace std;
 
@@ -21,7 +20,7 @@ int main() {
     sparseMatrix.report();*/
 
 
-    BinarySearchTree binarySearchTree;
+    /*BinarySearchTree binarySearchTree;
     binarySearchTree.addNode("Didier");
     binarySearchTree.addNode("Fatima");
     binarySearchTree.addNode("Aracely");
@@ -37,8 +36,7 @@ int main() {
     binarySearchTree.report();
     binarySearchTree.reportInOrder();
     binarySearchTree.reportPreOrder();
-    binarySearchTree.reportPostOrder();
-
+    binarySearchTree.reportPostOrder();*/
 
     // system("pause");
     return 0;
