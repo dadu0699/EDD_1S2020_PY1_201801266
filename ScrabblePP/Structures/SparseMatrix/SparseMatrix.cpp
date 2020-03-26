@@ -320,7 +320,7 @@ void SparseMatrix::report()
 
                     if (auxiliaryNode->getScore() == 3)
                     {
-                        myfile << " style = filled, fillcolor = coral2,";
+                        myfile << " style = filled, fillcolor = coral1,";
                     }
                     else if (auxiliaryNode->getScore() == 2)
                     {

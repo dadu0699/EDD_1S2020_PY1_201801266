@@ -21,16 +21,19 @@ int main() {
     sparseMatrix.report();
 
 
-    BinarySearchTree<string> binarySearchTree;
-    binarySearchTree.addNode("H");
-    binarySearchTree.addNode("C");
-    binarySearchTree.addNode("J");
-    binarySearchTree.addNode("A");
-    binarySearchTree.addNode("F");
-    binarySearchTree.addNode("M");
-    binarySearchTree.addNode("N");
-    binarySearchTree.addNode("E");
-    binarySearchTree.addNode("G");
+    BinarySearchTree binarySearchTree;
+    binarySearchTree.addNode("Didier");
+    binarySearchTree.addNode("Fatima");
+    binarySearchTree.addNode("Aracely");
+    binarySearchTree.addNode("Mary");
+    binarySearchTree.addNode("Danilo");
+    binarySearchTree.addNode("Adolfo");
+    binarySearchTree.addNode("Donis");
+    binarySearchTree.addNode("Juan");
+    binarySearchTree.addNode("Pedro");
+    binarySearchTree.addNode("Alfredo");
+    binarySearchTree.addNode("Esteban");
+    binarySearchTree.addNode("Gatica");
     binarySearchTree.report();
 
     // system("pause");

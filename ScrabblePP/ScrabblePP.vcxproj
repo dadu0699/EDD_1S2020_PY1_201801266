@@ -149,8 +149,12 @@
   <ItemGroup>
     <ClCompile Include="Model\Dictionary.cpp" />
     <ClCompile Include="ScrabblePP.cpp" />
+    <ClCompile Include="Structures\BinarySearchTree\BinarySearchTree.cpp" />
+    <ClCompile Include="Structures\BinarySearchTree\BinarySearchTreeNode.cpp" />
     <ClCompile Include="Structures\Queue\Queue.cpp" />
     <ClCompile Include="Structures\Queue\QueueNode.cpp" />
+    <ClCompile Include="Structures\SinglyLinkedList\SimpleList.cpp" />
+    <ClCompile Include="Structures\SinglyLinkedList\SimpleListNode.cpp" />
     <ClCompile Include="Structures\SparseMatrix\SparseMatrix.cpp" />
     <ClCompile Include="Structures\SparseMatrix\SparseMatrixNode.cpp" />
   </ItemGroup>

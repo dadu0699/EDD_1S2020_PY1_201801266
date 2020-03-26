@@ -33,6 +33,18 @@
     <ClCompile Include="Structures\SparseMatrix\SparseMatrixNode.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Structures\BinarySearchTree\BinarySearchTree.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Structures\BinarySearchTree\BinarySearchTreeNode.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Structures\SinglyLinkedList\SimpleList.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Structures\SinglyLinkedList\SimpleListNode.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Structures\CircularDoublyLinkedList\CircularDoubleList.h">
