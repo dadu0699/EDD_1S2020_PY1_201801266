@@ -1,6 +1,6 @@
 #include "SortedSimpleNode.h"
 
-SortedSimpleNode::SortedSimpleNode(int score)
+SortedSimpleNode::SortedSimpleNode(string name, int score)
 {
     this->score = score;
     nextNode = nullptr;
@@ -8,6 +8,16 @@ SortedSimpleNode::SortedSimpleNode(int score)
 
 SortedSimpleNode::~SortedSimpleNode()
 {
+}
+
+string SortedSimpleNode::getName()
+{
+    return name;
+}
+
+void SortedSimpleNode::setName(string name)
+{
+    this->name = name;
 }
 
 int SortedSimpleNode::getScore()

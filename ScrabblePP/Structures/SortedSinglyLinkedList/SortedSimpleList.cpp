@@ -15,9 +15,9 @@ bool SortedSimpleList::isEmpty()
     return firstNode == nullptr;
 }
 
-void SortedSimpleList::addFirstNode(int score)
+void SortedSimpleList::addFirstNode(string name, int score)
 {
-    SortedSimpleNode *node = new SortedSimpleNode(score);
+    SortedSimpleNode *node = new SortedSimpleNode(name, score);
     if (isEmpty())
     {
         lastNode = node;
@@ -30,9 +30,9 @@ void SortedSimpleList::addFirstNode(int score)
     sortList();
 }
 
-void SortedSimpleList::addLastNode(int score)
+void SortedSimpleList::addLastNode(string name, int score)
 {
-    SortedSimpleNode *node = new SortedSimpleNode(score);
+    SortedSimpleNode *node = new SortedSimpleNode(name, score);
     if (isEmpty())
     {
         firstNode = node;
@@ -50,7 +50,7 @@ void SortedSimpleList::readNodes()
     SortedSimpleNode *auxiliaryNode = firstNode;
     while (auxiliaryNode != nullptr)
     {
-        cout << auxiliaryNode->getScore() << " --> ";
+        cout << auxiliaryNode->getName() << " --> ";
         auxiliaryNode = auxiliaryNode->getNextNode();
     }
     cout << endl;

@@ -1,6 +1,10 @@
 #ifndef SCRABBLE___SORTEDSIMPLENODE_H
 #define SCRABBLE___SORTEDSIMPLENODE_H
 
+#include <iostream>
+
+using namespace std;
+
 class SortedSimpleNode
 {
 private:
@@ -9,8 +13,11 @@ private:
     SortedSimpleNode *nextNode;
 
 public:
-    SortedSimpleNode(int score);
+    SortedSimpleNode(string name, int score);
     ~SortedSimpleNode();
+
+    string getName();
+    void setName(string name);
 
     int getScore();
     void setScore(int score);

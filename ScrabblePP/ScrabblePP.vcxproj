@@ -158,6 +158,8 @@
     <ClCompile Include="Structures\Queue\QueueNode.cpp" />
     <ClCompile Include="Structures\SinglyLinkedList\SimpleList.cpp" />
     <ClCompile Include="Structures\SinglyLinkedList\SimpleListNode.cpp" />
+    <ClCompile Include="Structures\SortedSinglyLinkedList\SortedSimpleList.cpp" />
+    <ClCompile Include="Structures\SortedSinglyLinkedList\SortedSimpleListNode.cpp" />
     <ClCompile Include="Structures\SparseMatrix\SparseMatrix.cpp" />
     <ClCompile Include="Structures\SparseMatrix\SparseMatrixNode.cpp" />
   </ItemGroup>
@@ -172,6 +174,8 @@
     <ClInclude Include="Structures\Queue\QueueNode.h" />
     <ClInclude Include="Structures\SinglyLinkedList\SimpleList.h" />
     <ClInclude Include="Structures\SinglyLinkedList\SimpleNode.h" />
+    <ClInclude Include="Structures\SortedSinglyLinkedList\SortedSimpleList.h" />
+    <ClInclude Include="Structures\SortedSinglyLinkedList\SortedSimpleNode.h" />
     <ClInclude Include="Structures\SparseMatrix\SparseMatrix.h" />
     <ClInclude Include="Structures\SparseMatrix\SparseMatrixNode.h" />
   </ItemGroup>

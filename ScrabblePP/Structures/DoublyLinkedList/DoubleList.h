@@ -26,6 +26,7 @@ public:
     void deleteLastNode();
     void deleteSpecificNode(char letter);
     DoubleNode *searchNode(char letter);
+    void report();
 };
 
 #endif //SCRABBLE___DOUBLELIST_H

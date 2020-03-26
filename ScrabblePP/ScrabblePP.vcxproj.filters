@@ -54,6 +54,12 @@
     <ClCompile Include="Structures\CircularDoublyLinkedList\CircularDoubleNode.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Structures\SortedSinglyLinkedList\SortedSimpleList.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Structures\SortedSinglyLinkedList\SortedSimpleListNode.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Structures\CircularDoublyLinkedList\CircularDoubleList.h">
@@ -90,6 +96,12 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Structures\BinarySearchTree\BinarySearchTreeNode.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Structures\SortedSinglyLinkedList\SortedSimpleList.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Structures\SortedSinglyLinkedList\SortedSimpleNode.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

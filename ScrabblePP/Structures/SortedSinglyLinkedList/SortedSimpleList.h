@@ -18,8 +18,8 @@ private:
 public:
     SortedSimpleList();
     ~SortedSimpleList();
-    void addFirstNode(int score);
-    void addLastNode(int score);
+    void addFirstNode(string name, int score);
+    void addLastNode(string name, int score);
     void readNodes();
 };
 

@@ -138,3 +138,7 @@ DoubleNode *DoubleList::searchNode(char letter)
     }
     return auxiliaryNode;
 }
+
+void DoubleList::report() {
+
+}

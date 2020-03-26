@@ -3,6 +3,7 @@
 BinarySearchTree::BinarySearchTree()
 {
 	root = nullptr;
+	indexNode = 0;
 }
 
 BinarySearchTree::~BinarySearchTree()
