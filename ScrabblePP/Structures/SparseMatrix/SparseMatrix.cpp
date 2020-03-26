@@ -403,9 +403,9 @@ void SparseMatrix::report()
             system("dot -Tpng board.dot -o board.png");
             system("board.png");
         }
-        else
-        {
-            cout << "Unable to open file";
-        }
+    }
+    else
+    {
+        cout << "Unable to open file";
     }
 }

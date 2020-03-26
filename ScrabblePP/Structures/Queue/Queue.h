@@ -20,6 +20,7 @@ public:
 	void push(char letter, int score);
 	QueueNode *pop();
 	int getLength();
+	void report();
 };
 
 #endif //SCRABBLE___QUEUE_H

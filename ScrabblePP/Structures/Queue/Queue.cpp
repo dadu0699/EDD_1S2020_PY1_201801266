@@ -1,11 +1,17 @@
 #include "Queue.h"
+#include <iostream>
+#include <fstream>
 #include <stdlib.h>
+#include <time.h>
+
+using namespace std;
 
 Queue::Queue()
 {
 	firstNode = nullptr;
 	lastNode = nullptr;
 	length = 0;
+	pushLetter();
 }
 
 Queue::~Queue()
@@ -19,24 +25,24 @@ bool Queue::isEmpty()
 
 void Queue::push(char letter, int score)
 {
-	QueueNode *node = new QueueNode(letter, score);
+	QueueNode* node = new QueueNode(letter, score);
 	if (isEmpty())
 	{
 		firstNode = node;
-		lastNode = node;
 	}
 	else
 	{
 		lastNode->setNextNode(node);
 	}
+	lastNode = node;
 	length++;
 }
 
-QueueNode *Queue::pop()
+QueueNode* Queue::pop()
 {
 	if (!isEmpty())
 	{
-		QueueNode *node = firstNode;
+		QueueNode* node = firstNode;
 		firstNode = firstNode->getNextNode();
 		length--;
 		return node;
@@ -51,196 +57,143 @@ int Queue::getLength()
 
 void Queue::pushLetter()
 {
-	int a, b, c, d, e, f, g, h, i, j, l, m, n,
-		enie, o, p, q, r, s, t, u, v, x, y, z;
+	char letters[] = { 'A', 'A','A','A','A','A','A', 'A','A','A','A','A',
+		'E','E','E','E','E','E','E','E','E','E','E','E',
+		'O','O', 'O', 'O', 'O', 'O', 'O', 'O', 'O',
+		'I','I', 'I', 'I', 'I', 'I', 'S','S', 'S', 'S', 'S', 'S',
+		'N','N', 'N', 'N', 'N', 'R','R', 'R', 'R', 'R',
+		'U','U', 'U', 'U', 'U', 'D','D', 'D', 'D', 'D',
+		'L','L', 'L', 'L', 'T','T', 'T', 'T', 'C', 'C','C', 'C',
+		'G', 'G', 'B','B', 'M', 'M', 'P','P','H','H',
+		'F','V', 'Y', 'Q', 'J', '\u00D1', 'X', 'Z' };
+	int length = sizeof(letters);
+	int index = 0;
 
-	f = v = y = q = j = enie = x = z = 1;
-	g = b = m = p = h = 2;
-	l = t = c = 4;
-	n = r = u = d = 5;
-	i = s = 6;
-	o = 9;
-	a = e = 12;
-
-	while (a != b != c != d != e != f != g != h != i != j != l != m != n != enie != o != p != q != r != s != t != u != v != x != y != z != 0)
+	while (length > 0)
 	{
-		switch (rand() % 26)
+		srand(time(NULL));
+		index = (rand() % length);
+		switch (letters[index])
 		{
-		case 1:
-			if (a > 0)
-			{
-				push('A', 1);
-				a--;
-			}
+		case 'A':
+			push('A', 1);
 			break;
-		case 2:
-			if (e > 0)
-			{
-				push('E', 1);
-				e--;
-			}
+		case 'E':
+			push('E', 1);
 			break;
-		case 3:
-			if (o > 0)
-			{
-				push('O', 1);
-				o;
-			}
+		case 'O':
+			push('O', 1);
 			break;
-		case 4:
-			if (i > 0)
-			{
-				push('I', 1);
-				i--;
-			}
+		case 'I':
+			push('I', 1);
 			break;
-		case 5:
-			if (s > 0)
-			{
-				push('S', 1);
-				s--;
-			}
+		case 'S':
+			push('S', 1);
 			break;
-		case 6:
-			if (n > 0)
-			{
-				push('N', 1);
-				n--;
-			}
+		case 'N':
+			push('N', 1);
 			break;
-		case 7:
-			if (l > 0)
-			{
-				push('L', 1);
-				l--;
-			}
+		case 'L':
+			push('L', 1);
 			break;
-		case 8:
-			if (r > 0)
-			{
-				push('R', 1);
-				r--;
-			}
+		case 'R':
+			push('R', 1);
 			break;
-		case 9:
-			if (u > 0)
-			{
-				push('U', 1);
-				u--;
-			}
+		case 'U':
+			push('U', 1);
 			break;
-		case 10:
-			if (t > 0)
-			{
-				push('T', 1);
-				t--;
-			}
+		case 'T':
+			push('T', 1);
 			break;
-		case 11:
-			if (d > 0)
-			{
-				push('D', 2);
-				d--;
-			}
+		case 'D':
+			push('D', 2);
 			break;
-		case 12:
-			if (g > 0)
-			{
-				push('G', 2);
-				g--;
-			}
+		case 'G':
+			push('G', 2);
 			break;
-		case 13:
-			if (c > 0)
-			{
-				push('C', 3);
-				c--;
-			}
+		case 'C':
+			push('C', 3);
 			break;
-		case 14:
-			if (b > 0)
-			{
-				push('B', 3);
-				b--;
-			}
+		case 'B':
+			push('B', 3);
 			break;
-		case 15:
-			if (m > 0)
-			{
-				push('M', 3);
-				m--;
-			}
+		case 'M':
+			push('M', 3);
 			break;
-		case 16:
-			if (p > 0)
-			{
-				push('P', 3);
-				p--;
-			}
+		case 'P':
+			push('P', 3);
 			break;
-		case 17:
-			if (h > 0)
-			{
-				push('H', 4);
-				h--;
-			}
+		case 'H':
+			push('H', 4);
 			break;
-		case 18:
-			if (f > 0)
-			{
-				push('F', 4);
-				f--;
-			}
+		case 'F':
+			push('F', 4);
 			break;
-		case 19:
-			if (v > 0)
-			{
-				push('V', 4);
-				v--;
-			}
+		case 'V':
+			push('V', 4);
 			break;
-		case 20:
-			if (y > 0)
-			{
-				push('Y', 4);
-				y--;
-			}
+		case 'Y':
+			push('Y', 4);
 			break;
-		case 21:
-			if (q > 0)
-			{
-				push('Q', 5);
-				q--;
-			}
+		case 'Q':
+			push('Q', 5);
 			break;
-		case 22:
-			if (j > 0)
-			{
-				push('J', 8);
-				j--;
-			}
+		case 'J':
+			push('J', 8);
 			break;
-		case 23:
-			if (enie > 0)
-			{
-				push('�', 8);
-				enie--;
-			}
+		case '\u00D1':
+			push('\u00D1', 8);
 			break;
-		case 24:
-			if (x > 0)
-			{
-				push('X', 8);
-				x--;
-			}
+		case 'X':
+			push('X', 8);
 			break;
-		case 25:
-			if (z > 0)
-			{
-				push('Z', 10);
-				z--;
-			}
+		case 'Z':
+			push('Z', 10);
 			break;
+		}
+
+		for (int i = index; i < length - 1; ++i) {
+			letters[i] = letters[i + 1];
+			cout << letters[i] << " ";
+		}
+		length--;
+	}
+}
+
+void Queue::report()
+{
+	if (!isEmpty())
+	{
+		QueueNode* auxiliaryNode = firstNode;
+		ofstream myfile("Queue.dot");
+		int index = 0;
+
+		if (myfile.is_open())
+		{
+			myfile << "digraph G { rankdir = BT;";
+			myfile << "node[shape=record, style=filled fillcolor=cornsilk2];";
+
+			while (auxiliaryNode != nullptr)
+			{
+				myfile << "N" << index << " [label =\"" << auxiliaryNode->getLetter() << "\"];";
+				auxiliaryNode = auxiliaryNode->getNextNode();
+				index++;
+			}
+
+			for (int i = 0; i < (index - 1); i++)
+			{
+				myfile << "N" << (i + 1) << " -> N" << i << ";";
+			}
+
+			myfile << "}";
+
+			myfile.close();
+			system("dot -Tpng Queue.dot -o Queue.png");
+			system("Queue.png");
+		}
+		else
+		{
+			cout << "Unable to open file";
 		}
 	}
 }

@@ -17,6 +17,9 @@ private:
 	bool isEmpty();
 
 	string printBinarySearchTree(BinarySearchTreeNode *root);
+	string printInOrder(BinarySearchTreeNode *root);
+	string printPreOrder(BinarySearchTreeNode *root);
+	string printPostOrder(BinarySearchTreeNode *root);
 
 public:
 	BinarySearchTree();
@@ -26,6 +29,12 @@ public:
 	bool addNode(string name);
 
 	void report();
+
+	void inOrder(BinarySearchTreeNode* root);
+
+	void preOrder(BinarySearchTreeNode* root);
+	
+	void postOrder(BinarySearchTreeNode* root);
 };
 
 #endif //SCRABBLE___BINARYSEARCHTREE_H

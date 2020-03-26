@@ -23,6 +23,7 @@ public:
     void updateNode(string oldWord, string newWord);
     void deleteSpecificNode(string word);
     CircularDoubleNode *searchNode(string word);
+    void report();
 };
 
 #endif //SCRABBLE___CIRCULARDOUBLELIST_H

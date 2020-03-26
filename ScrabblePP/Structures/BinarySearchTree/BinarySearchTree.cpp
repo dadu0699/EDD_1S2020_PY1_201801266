@@ -89,7 +89,7 @@ void BinarySearchTree::report()
 
 	if (myfile.is_open())
 	{
-		if (root != nullptr)
+		if (!isEmpty())
 		{
 			myfile << "digraph G { ";
 
@@ -101,9 +101,21 @@ void BinarySearchTree::report()
 			system("dot -Tpng BinarySearchTree.dot -o BinarySearchTree.png");
 			system("BinarySearchTree.png");
 		}
-		else
-		{
-			cout << "Unable to open file";
-		}
 	}
+	else
+	{
+		cout << "Unable to open file";
+	}
+}
+
+string BinarySearchTree::printInOrder(BinarySearchTreeNode* root)
+{
+	string myfile;
+	if (root != nullptr)
+	{
+		myfile.append(printInOrder(root->getLeftNode()));
+		myfile.append("N" + to_string(indexNode) + " [label =\"" + root->getName() + "\"];");
+		myfile.append(printInOrder(root->getRightNode()));
+	}
+	return myfile;
 }
