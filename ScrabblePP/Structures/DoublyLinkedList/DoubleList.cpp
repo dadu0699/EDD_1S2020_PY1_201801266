@@ -1,4 +1,8 @@
 #include "DoubleList.h"
+#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 DoubleList::DoubleList()
 {
@@ -139,6 +143,41 @@ DoubleNode *DoubleList::searchNode(char letter)
     return auxiliaryNode;
 }
 
-void DoubleList::report() {
+void DoubleList::report()
+{
+    if (!isEmpty())
+    {
+        DoubleNode* auxiliaryNode = firstNode;
+        ofstream myfile("DoublyLinkedList.dot");
+        int index = 0;
 
+        if (myfile.is_open())
+        {
+            myfile << "digraph G { rankdir = LR;";
+            myfile << "node[shape=record, style=filled fillcolor=cornsilk2];";
+
+            while (auxiliaryNode != nullptr)
+            {
+                myfile << "N" << index << " [label =\"" << auxiliaryNode->getLetter() << "\"];";
+                auxiliaryNode = auxiliaryNode->getNextNode();
+                index++;
+            }
+
+            for (int i = 0; i < (index - 1); i++)
+            {
+                myfile << "N" << i << " -> N" << (i + 1) << ";";
+                myfile << "N" << (i + 1) << " -> N" << i << ";";
+            }
+
+            myfile << "}";
+
+            myfile.close();
+            system("dot -Tpng DoublyLinkedList.dot -o DoublyLinkedList.png");
+            system("DoublyLinkedList.png");
+        }
+        else
+        {
+            cout << "Unable to open file";
+        }
+    }
 }

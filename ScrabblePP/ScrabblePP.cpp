@@ -7,7 +7,7 @@
 using namespace std;
 
 int main() {
-    /*SparseMatrix sparseMatrix;
+    SparseMatrix sparseMatrix;
     sparseMatrix.addNode(0, 1, 1,"A");
     sparseMatrix.addNode(1, 3, 2,"d");
     sparseMatrix.addNode(3, 7, 2,"f");
@@ -17,10 +17,9 @@ int main() {
     sparseMatrix.addNode(4, 3, 1,"c");
     sparseMatrix.addNode(2, 7, 2,"ñ");
     sparseMatrix.addNode(1, 1, 3,"11");
-    sparseMatrix.report();*/
+    sparseMatrix.report();
 
-
-    /*BinarySearchTree binarySearchTree;
+    BinarySearchTree binarySearchTree;
     binarySearchTree.addNode("Didier");
     binarySearchTree.addNode("Fatima");
     binarySearchTree.addNode("Aracely");
@@ -36,7 +35,7 @@ int main() {
     binarySearchTree.report();
     binarySearchTree.reportInOrder();
     binarySearchTree.reportPreOrder();
-    binarySearchTree.reportPostOrder();*/
+    binarySearchTree.reportPostOrder();
 
     // system("pause");
     return 0;
