@@ -1,24 +1,20 @@
 #ifndef SCRABBLE___BINARYSEARCHTREENODE_H
 #define SCRABBLE___BINARYSEARCHTREENODE_H
 
-#include "../SinglyLinkedList/SimpleList.h"
+#include "../../Model/Player.h"
 
 class BinarySearchTreeNode
 {
 private:
-    string name;
-    SimpleList *scores;
+    Player *player;
     BinarySearchTreeNode *leftNode;
     BinarySearchTreeNode *rightNode;
 
 public:
-    BinarySearchTreeNode(string name);
+    BinarySearchTreeNode(Player *player);
     ~BinarySearchTreeNode();
 
-    string getName();
-    void setName(string name);
-
-    SimpleList *getScores();
+    Player* getPlayer() const;
 
     BinarySearchTreeNode *getLeftNode() const;
     void setLeftNode(BinarySearchTreeNode *leftNode);

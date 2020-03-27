@@ -147,7 +147,7 @@ void DoubleList::report()
 {
     if (!isEmpty())
     {
-        DoubleNode* auxiliaryNode = firstNode;
+        DoubleNode *auxiliaryNode = firstNode;
         ofstream myfile("DoublyLinkedList.dot");
         int index = 0;
 

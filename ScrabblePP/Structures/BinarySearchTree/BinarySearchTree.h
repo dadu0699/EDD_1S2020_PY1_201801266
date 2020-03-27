@@ -26,7 +26,7 @@ public:
 
 	~BinarySearchTree();
 
-	bool addNode(string name);
+	bool addNode(Player *player);
 
 	void report();
 

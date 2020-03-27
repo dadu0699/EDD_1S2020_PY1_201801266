@@ -20,18 +20,16 @@ int main() {
     sparseMatrix.report();
 
     BinarySearchTree binarySearchTree;
-    binarySearchTree.addNode("Didier");
-    binarySearchTree.addNode("Fatima");
-    binarySearchTree.addNode("Aracely");
-    binarySearchTree.addNode("Mary");
-    binarySearchTree.addNode("Danilo");
-    binarySearchTree.addNode("Adolfo");
-    binarySearchTree.addNode("Donis");
-    binarySearchTree.addNode("Juan");
-    binarySearchTree.addNode("Pedro");
-    binarySearchTree.addNode("Alfredo");
-    binarySearchTree.addNode("Esteban");
-    binarySearchTree.addNode("Gatica");
+    binarySearchTree.addNode(new Player("Didier", false));
+    binarySearchTree.addNode(new Player("Fatima", false));
+    binarySearchTree.addNode(new Player("Aracely", false));
+    binarySearchTree.addNode(new Player("Mary", false));
+    binarySearchTree.addNode(new Player("Dominguez", false));
+    binarySearchTree.addNode(new Player("Adolfo", false));
+    binarySearchTree.addNode(new Player("Jacqueline", false));
+    binarySearchTree.addNode(new Player("Juan", false));
+    binarySearchTree.addNode(new Player("Pedro", false));
+    binarySearchTree.addNode(new Player("Vivi", false));
     binarySearchTree.report();
     binarySearchTree.reportInOrder();
     binarySearchTree.reportPreOrder();

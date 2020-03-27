@@ -147,6 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Menu\Menu.cpp" />
+    <ClCompile Include="Model\Player.cpp" />
     <ClCompile Include="ScrabblePP.cpp" />
     <ClCompile Include="Structures\BinarySearchTree\BinarySearchTree.cpp" />
     <ClCompile Include="Structures\BinarySearchTree\BinarySearchTreeNode.cpp" />
@@ -164,6 +166,8 @@
     <ClCompile Include="Structures\SparseMatrix\SparseMatrixNode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Menu\Menu.h" />
+    <ClInclude Include="Model\Player.h" />
     <ClInclude Include="Structures\BinarySearchTree\BinarySearchTree.h" />
     <ClInclude Include="Structures\BinarySearchTree\BinarySearchTreeNode.h" />
     <ClInclude Include="Structures\CircularDoublyLinkedList\CircularDoubleList.h" />

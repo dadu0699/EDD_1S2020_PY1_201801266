@@ -1,9 +1,8 @@
 #include "BinarySearchTreeNode.h"
 
-BinarySearchTreeNode::BinarySearchTreeNode(string name)
+BinarySearchTreeNode::BinarySearchTreeNode(Player *player)
 {
-	this->name = name;
-	scores = new SimpleList();
+	this->player = player;
 	leftNode = nullptr;
 	rightNode = nullptr;
 }
@@ -12,19 +11,9 @@ BinarySearchTreeNode::~BinarySearchTreeNode()
 {
 }
 
-string BinarySearchTreeNode::getName()
+Player *BinarySearchTreeNode::getPlayer() const
 {
-	return name;
-}
-
-void BinarySearchTreeNode::setName(string name)
-{
-	this->name = name;
-}
-
-SimpleList *BinarySearchTreeNode::getScores()
-{
-	return scores;
+	return player;
 }
 BinarySearchTreeNode *BinarySearchTreeNode::getLeftNode() const
 {

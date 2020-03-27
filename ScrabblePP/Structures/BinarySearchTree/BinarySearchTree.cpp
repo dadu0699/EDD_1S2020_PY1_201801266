@@ -15,9 +15,9 @@ bool BinarySearchTree::isEmpty()
 	return root == nullptr;
 }
 
-bool BinarySearchTree::addNode(string name)
+bool BinarySearchTree::addNode(Player* player)
 {
-	BinarySearchTreeNode *newNode = new BinarySearchTreeNode(name);
+	BinarySearchTreeNode *newNode = new BinarySearchTreeNode(player);
 	if (isEmpty())
 	{
 		root = newNode;
@@ -30,7 +30,7 @@ bool BinarySearchTree::addNode(string name)
 		while (true)
 		{
 			parentNode = auxiliaryNode;
-			if (name < auxiliaryNode->getName())
+			if (player->getName() < auxiliaryNode->getPlayer()->getName())
 			{
 				auxiliaryNode = auxiliaryNode->getLeftNode();
 				if (auxiliaryNode == nullptr)
@@ -39,7 +39,7 @@ bool BinarySearchTree::addNode(string name)
 					return true;
 				}
 			}
-			else if (name > auxiliaryNode->getName())
+			else if (player->getName() > auxiliaryNode->getPlayer()->getName())
 			{
 				auxiliaryNode = auxiliaryNode->getRightNode();
 				if (auxiliaryNode == nullptr)
@@ -48,7 +48,7 @@ bool BinarySearchTree::addNode(string name)
 					return true;
 				}
 			}
-			else if (name == auxiliaryNode->getName())
+			else if (player->getName() == auxiliaryNode->getPlayer()->getName())
 			{
 				return false;
 			}
@@ -62,7 +62,7 @@ string BinarySearchTree::printBinarySearchTree(BinarySearchTreeNode *root)
 	if (!isEmpty())
 	{
 		int indexParentNode = indexNode;
-		myfile.append("N" + to_string(indexNode) + "[label = \"" + root->getName() + "\"]; ");
+		myfile.append("N" + to_string(indexNode) + "[label = \"" + root->getPlayer()->getName() + "\"]; ");
 
 		if (root->getLeftNode() != nullptr)
 		{
@@ -115,7 +115,7 @@ string BinarySearchTree::printInOrder(BinarySearchTreeNode *root)
 	{
 		myfile.append(printInOrder(root->getLeftNode()));
 		indexNode++;
-		myfile.append("N" + to_string(indexNode) + " [label =\"" + root->getName() + "\"];");
+		myfile.append("N" + to_string(indexNode) + " [label =\"" + root->getPlayer()->getName() + "\"];");
 		myfile.append(printInOrder(root->getRightNode()));
 	}
 	return myfile;
@@ -127,7 +127,7 @@ string BinarySearchTree::printPreOrder(BinarySearchTreeNode *root)
 	if (root != nullptr)
 	{
 		indexNode++;
-		myfile.append("N" + to_string(indexNode) + " [label =\"" + root->getName() + "\"];");
+		myfile.append("N" + to_string(indexNode) + " [label =\"" + root->getPlayer()->getName() + "\"];");
 		myfile.append(printPreOrder(root->getLeftNode()));
 		myfile.append(printPreOrder(root->getRightNode()));
 	}
@@ -142,7 +142,7 @@ string BinarySearchTree::printPostOrder(BinarySearchTreeNode *root)
 		myfile.append(printPostOrder(root->getLeftNode()));
 		myfile.append(printPostOrder(root->getRightNode()));
 		indexNode++;
-		myfile.append("N" + to_string(indexNode) + " [label =\"" + root->getName() + "\"];");
+		myfile.append("N" + to_string(indexNode) + " [label =\"" + root->getPlayer()->getName() + "\"];");
 	}
 	return myfile;
 }
