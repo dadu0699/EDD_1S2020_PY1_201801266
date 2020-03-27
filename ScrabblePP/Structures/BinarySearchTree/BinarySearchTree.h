@@ -1,12 +1,7 @@
 #ifndef SCRABBLE___BINARYSEARCHTREE_H
 #define SCRABBLE___BINARYSEARCHTREE_H
 
-#include <iostream>
-#include <fstream>
-#include <string>
 #include "BinarySearchTreeNode.h"
-
-using namespace std;
 
 class BinarySearchTree
 {

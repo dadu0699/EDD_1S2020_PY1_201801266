@@ -1,4 +1,4 @@
-#ifndef SCRABBLE___MENU_H
+#ifndef SCRABBLE_MENU_H
 #define SCRABBLE_MENU_H
 
 #include "../Structures/SparseMatrix/SparseMatrix.h"
@@ -26,12 +26,4 @@ public:
 	void StartGame();
 };
 
-Menu::Menu()
-{
-}
-
-Menu::~Menu()
-{
-}
-
-#endif // SCRABBLE___MENU_H
+#endif // SCRABBLE_MENU_H

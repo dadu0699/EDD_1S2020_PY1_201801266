@@ -1,4 +1,9 @@
 #include "BinarySearchTree.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
 
 BinarySearchTree::BinarySearchTree()
 {
@@ -21,6 +26,7 @@ bool BinarySearchTree::addNode(Player *player)
 	if (isEmpty())
 	{
 		root = newNode;
+		return true;
 	}
 	else
 	{
@@ -54,6 +60,7 @@ bool BinarySearchTree::addNode(Player *player)
 			}
 		}
 	}
+	return false;
 }
 
 string BinarySearchTree::printBinarySearchTree(BinarySearchTreeNode *root)
