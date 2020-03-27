@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Menu\Menu.cpp" />
+    <ClCompile Include="Model\Letter.cpp" />
     <ClCompile Include="Model\Player.cpp" />
     <ClCompile Include="ScrabblePP.cpp" />
     <ClCompile Include="Structures\BinarySearchTree\BinarySearchTree.cpp" />
@@ -167,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu\Menu.h" />
+    <ClInclude Include="Model\Letter.h" />
     <ClInclude Include="Model\Player.h" />
     <ClInclude Include="Structures\BinarySearchTree\BinarySearchTree.h" />
     <ClInclude Include="Structures\BinarySearchTree\BinarySearchTreeNode.h" />

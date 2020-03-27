@@ -1,8 +1,8 @@
 #include "Letter.h"
 
-Letter::Letter(char letter, int score)
+Letter::Letter(char character, int score)
 {
-    this->character = letter;
+    this->character = character;
     this->score = score;
 }
 
@@ -11,9 +11,9 @@ char Letter::getCharacter()
     return character;
 }
 
-void Letter::setCharacter(char letter)
+void Letter::setCharacter(char character)
 {
-    this->character = letter;
+    this->character = character;
 }
 
 int Letter::getScore()
