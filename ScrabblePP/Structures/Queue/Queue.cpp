@@ -23,9 +23,9 @@ bool Queue::isEmpty()
 	return firstNode == nullptr;
 }
 
-void Queue::push(char letter, int score)
+void Queue::push(Letter *letter)
 {
-	QueueNode *node = new QueueNode(letter, score);
+	QueueNode *node = new QueueNode(letter);
 	if (isEmpty())
 	{
 		firstNode = node;
@@ -76,79 +76,79 @@ void Queue::pushLetter()
 		switch (letters[index])
 		{
 		case 'A':
-			push('A', 1);
+			push(new Letter('A', 1));
 			break;
 		case 'E':
-			push('E', 1);
+			push(new Letter('E', 1));
 			break;
 		case 'O':
-			push('O', 1);
+			push(new Letter('O', 1));
 			break;
 		case 'I':
-			push('I', 1);
+			push(new Letter('I', 1));
 			break;
 		case 'S':
-			push('S', 1);
+			push(new Letter('S', 1));
 			break;
 		case 'N':
-			push('N', 1);
+			push(new Letter('N', 1));
 			break;
 		case 'L':
-			push('L', 1);
+			push(new Letter('L', 1));
 			break;
 		case 'R':
-			push('R', 1);
+			push(new Letter('R', 1));
 			break;
 		case 'U':
-			push('U', 1);
+			push(new Letter('U', 1));
 			break;
 		case 'T':
-			push('T', 1);
+			push(new Letter('T', 1));
 			break;
 		case 'D':
-			push('D', 2);
+			push(new Letter('D', 2));
 			break;
 		case 'G':
-			push('G', 2);
+			push(new Letter('G', 2));
 			break;
 		case 'C':
-			push('C', 3);
+			push(new Letter('C', 3));
 			break;
 		case 'B':
-			push('B', 3);
+			push(new Letter('B', 3));
 			break;
 		case 'M':
-			push('M', 3);
+			push(new Letter('M', 3));
 			break;
 		case 'P':
-			push('P', 3);
+			push(new Letter('P', 3));
 			break;
 		case 'H':
-			push('H', 4);
+			push(new Letter('H', 4));
 			break;
 		case 'F':
-			push('F', 4);
+			push(new Letter('F', 4));
 			break;
 		case 'V':
-			push('V', 4);
+			push(new Letter('V', 4));
 			break;
 		case 'Y':
-			push('Y', 4);
+			push(new Letter('Y', 4));
 			break;
 		case 'Q':
-			push('Q', 5);
+			push(new Letter('Q', 5));
 			break;
 		case 'J':
-			push('J', 8);
+			push(new Letter('J', 8));
 			break;
 		case '\u00D1':
-			push('\u00D1', 8);
+			push(new Letter('\u00D1', 8));
 			break;
 		case 'X':
-			push('X', 8);
+			push(new Letter('X', 8));
 			break;
 		case 'Z':
-			push('Z', 10);
+			push(new Letter('Z', 10));
 			break;
 		}
 

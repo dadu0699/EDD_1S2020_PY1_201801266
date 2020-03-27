@@ -1,6 +1,6 @@
 #include "DoubleNode.h"
 
-DoubleNode::DoubleNode(char letter)
+DoubleNode::DoubleNode(Letter *letter)
 {
     this->letter = letter;
     nextNode = nullptr;
@@ -11,14 +11,9 @@ DoubleNode::~DoubleNode()
 {
 }
 
-char DoubleNode::getLetter()
+Letter *DoubleNode::getLetter() const
 {
     return letter;
-}
-
-void DoubleNode::setLetter(char letter)
-{
-    this->letter = letter;
 }
 
 DoubleNode *DoubleNode::getNextNode() const

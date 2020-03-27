@@ -19,7 +19,7 @@ bool DoubleList::isEmpty()
     return firstNode == nullptr;
 }
 
-void DoubleList::addFirstNode(char letter)
+void DoubleList::addFirstNode(Letter *letter)
 {
     DoubleNode *node = new DoubleNode(letter);
     if (isEmpty())
@@ -34,7 +34,7 @@ void DoubleList::addFirstNode(char letter)
     firstNode = node;
 }
 
-void DoubleList::addLastNode(char letter)
+void DoubleList::addLastNode(Letter *letter)
 {
     DoubleNode *node = new DoubleNode(letter);
     if (isEmpty())
@@ -47,37 +47,6 @@ void DoubleList::addLastNode(char letter)
         lastNode->setNextNode(node);
     }
     lastNode = node;
-}
-
-void DoubleList::readStartNodes()
-{
-    DoubleNode *auxiliaryNode = firstNode;
-    while (auxiliaryNode != nullptr)
-    {
-        cout << auxiliaryNode->getLetter() << " <--> ";
-        auxiliaryNode = auxiliaryNode->getNextNode();
-    }
-    cout << endl;
-}
-
-void DoubleList::readEndNodes()
-{
-    DoubleNode *auxiliaryNode = lastNode;
-    while (auxiliaryNode != nullptr)
-    {
-        cout << auxiliaryNode->getLetter() << " <--> ";
-        auxiliaryNode = auxiliaryNode->getPreviousNode();
-    }
-    cout << endl;
-}
-
-void DoubleList::updateNode(char oldLetter, char newLetter)
-{
-    DoubleNode *node = searchNode(oldLetter);
-    if (node != nullptr)
-    {
-        node->setLetter(newLetter);
-    }
 }
 
 void DoubleList::deleteFirstNode()
@@ -107,11 +76,11 @@ void DoubleList::deleteSpecificNode(char letter)
 {
     if (!isEmpty())
     {
-        if (firstNode == lastNode && letter == firstNode->getLetter())
+        if (firstNode == lastNode && letter == firstNode->getLetter()->getCharacter())
         {
             firstNode = nullptr;
         }
-        else if (letter == firstNode->getLetter())
+        else if (letter == firstNode->getLetter()->getCharacter())
         {
             firstNode = firstNode->getNextNode();
             firstNode->setPreviousNode(nullptr);
@@ -136,7 +105,7 @@ void DoubleList::deleteSpecificNode(char letter)
 DoubleNode *DoubleList::searchNode(char letter)
 {
     DoubleNode *auxiliaryNode = firstNode;
-    while (auxiliaryNode != nullptr && auxiliaryNode->getLetter() != letter)
+    while (auxiliaryNode != nullptr && auxiliaryNode->getLetter()->getCharacter() != letter)
     {
         auxiliaryNode = auxiliaryNode->getNextNode();
     }
@@ -158,7 +127,7 @@ void DoubleList::report()
 
             while (auxiliaryNode != nullptr)
             {
-                myfile << "N" << index << " [label =\"" << auxiliaryNode->getLetter() << "\"];";
+                myfile << "N" << index << " [label =\"" << auxiliaryNode->getLetter()->getCharacter() << "\"];";
                 auxiliaryNode = auxiliaryNode->getNextNode();
                 index++;
             }

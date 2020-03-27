@@ -1,10 +1,7 @@
 #ifndef SCRABBLE___DOUBLELIST_H
 #define SCRABBLE___DOUBLELIST_H
 
-#include <iostream>
 #include "DoubleNode.h"
-
-using namespace std;
 
 class DoubleList
 {
@@ -17,11 +14,8 @@ private:
 public:
     DoubleList();
     ~DoubleList();
-    void addFirstNode(char letter);
-    void addLastNode(char letter);
-    void readStartNodes();
-    void readEndNodes();
-    void updateNode(char oldLetter, char newLetter);
+    void addFirstNode(Letter *letter);
+    void addLastNode(Letter *letter);
     void deleteFirstNode();
     void deleteLastNode();
     void deleteSpecificNode(char letter);

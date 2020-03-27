@@ -4,7 +4,7 @@ Player::Player(string name, bool turn)
 {
 	this->name = name;
 	this->turn = turn;
-	scores = new SimpleList();	
+	scores = new SimpleList();
 }
 
 Player::~Player()
@@ -21,7 +21,7 @@ void Player::setName(string name)
 	this->name = name;
 }
 
-SimpleList* Player::getScores() const
+SimpleList *Player::getScores() const
 {
 	return scores;
 }

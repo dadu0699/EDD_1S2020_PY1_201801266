@@ -10,8 +10,9 @@ class Player
 {
 private:
 	string name;
-	SimpleList* scores;
+	SimpleList *scores;
 	bool turn;
+
 public:
 	Player(string name, bool turn);
 	~Player();
@@ -19,7 +20,7 @@ public:
 	string getName();
 	void setName(string name);
 
-	SimpleList* getScores() const;
+	SimpleList *getScores() const;
 
 	bool getTurn();
 	void setTurn(bool turn);

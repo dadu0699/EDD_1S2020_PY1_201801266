@@ -15,7 +15,7 @@ bool BinarySearchTree::isEmpty()
 	return root == nullptr;
 }
 
-bool BinarySearchTree::addNode(Player* player)
+bool BinarySearchTree::addNode(Player *player)
 {
 	BinarySearchTreeNode *newNode = new BinarySearchTreeNode(player);
 	if (isEmpty())

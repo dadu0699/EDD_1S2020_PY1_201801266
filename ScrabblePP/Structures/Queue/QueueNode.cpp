@@ -1,9 +1,8 @@
 #include "QueueNode.h"
 
-QueueNode::QueueNode(char letter, int score)
+QueueNode::QueueNode(Letter *letter)
 {
 	this->letter = letter;
-	this->score = score;
 	nextNode = nullptr;
 }
 
@@ -11,24 +10,9 @@ QueueNode::~QueueNode()
 {
 }
 
-char QueueNode::getLetter()
+Letter *QueueNode::getLetter() const
 {
 	return letter;
-}
-
-void QueueNode::setLetter(char letter)
-{
-	this->letter = letter;
-}
-
-int QueueNode::getScore()
-{
-	return score;
-}
-
-void QueueNode::setScore(int score)
-{
-	this->score = score;
 }
 
 QueueNode *QueueNode::getNextNode() const

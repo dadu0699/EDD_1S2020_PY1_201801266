@@ -1,22 +1,19 @@
 #ifndef SCRABBLE___QUEUENODE_H
 #define SCRABBLE___QUEUENODE_H
 
+#include "../../Model/Letter.h"
+
 class QueueNode
 {
 private:
-	char letter;
-	int score;
+	Letter *letter;
 	QueueNode *nextNode;
 
 public:
-	QueueNode(char letter, int score);
+	QueueNode(Letter *letter);
 	~QueueNode();
 
-	char getLetter();
-	void setLetter(char letter);
-
-	int getScore();
-	void setScore(int score);
+	Letter *getLetter() const;
 
 	QueueNode *getNextNode() const;
 	void setNextNode(QueueNode *nextNode);

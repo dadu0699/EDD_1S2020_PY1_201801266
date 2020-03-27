@@ -1,23 +1,20 @@
 #ifndef SCRABBLE___DOUBLENODE_H
 #define SCRABBLE___DOUBLENODE_H
 
-#include <iostream>
-
-using namespace std;
+#include "../../Model/Letter.h"
 
 class DoubleNode
 {
 private:
-    char letter;
+    Letter *letter;
     DoubleNode *nextNode;
     DoubleNode *previousNode;
 
 public:
-    DoubleNode(char letter);
+    DoubleNode(Letter *letter);
     ~DoubleNode();
 
-    char getLetter();
-    void setLetter(char letter);
+    Letter *getLetter() const;
 
     DoubleNode *getNextNode() const;
     void setNextNode(DoubleNode *nextNode);

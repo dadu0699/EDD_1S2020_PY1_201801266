@@ -14,7 +14,7 @@ public:
     BinarySearchTreeNode(Player *player);
     ~BinarySearchTreeNode();
 
-    Player* getPlayer() const;
+    Player *getPlayer() const;
 
     BinarySearchTreeNode *getLeftNode() const;
     void setLeftNode(BinarySearchTreeNode *leftNode);

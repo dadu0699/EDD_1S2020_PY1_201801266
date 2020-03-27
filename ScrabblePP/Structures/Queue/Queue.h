@@ -17,7 +17,7 @@ public:
 	Queue();
 	~Queue();
 
-	void push(char letter, int score);
+	void push(Letter *letter);
 	QueueNode *pop();
 	int getLength();
 	void report();
