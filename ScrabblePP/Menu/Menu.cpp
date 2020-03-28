@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include <iostream>
+#include <windows.data.json.h>
 
 using namespace std;
 
@@ -40,16 +41,13 @@ void Menu::principal()
 		switch (option)
 		{
 		case 1:
-			if (playerOne != nullptr && playerTwo != nullptr)
-			{
-				cout << endl
-					 << "\tJugar";
-			}
+			startGame();
 			break;
 		case 2:
 			choosePlayer();
 			break;
 		case 3:
+			scoreBoard->report();
 			break;
 		case 4:
 			cout << endl
@@ -106,6 +104,7 @@ void Menu::choosePlayer()
 				}
 				else
 				{
+					playerOne->setTurn(true);
 					flagPlayerOne = true;
 				}
 			}
@@ -129,7 +128,7 @@ void Menu::choosePlayer()
 		case 2:
 			if (!flagPlayerOne)
 			{
-				playerOne = new Player("", false);
+				playerOne = new Player("", true);
 				cout << endl
 					 << "\t >> Jugador 1: ";
 				cin >> namePlayerOne;
