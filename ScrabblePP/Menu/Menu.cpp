@@ -1,11 +1,32 @@
 #include "Menu.h"
 #include <iostream>
-#include <windows.data.json.h>
+#include "nlohmann/json.hpp"
+#include <fstream>
+#include <typeinfo>
 
 using namespace std;
+using json = nlohmann::json;
 
 Menu::Menu()
 {
+	ifstream i("properties.json");
+	json j3;
+	i >> j3;
+
+	cout << "Dimensiones: " << j3.at("dimension") << endl;
+	cout << "Casillas: " << endl;
+	cout << "\tDobles: " << endl;
+	for (size_t i = 0; i < j3.at("casillas").at("dobles").size(); i++)
+	{
+		cout << "\t\tX: " << j3.at("casillas").at("dobles")[i].at("x") << endl;
+		cout << "\t\tY: " << j3.at("casillas").at("dobles")[i].at("y") << endl;
+	}
+	cout << "\tTriples: " << endl;
+	for (size_t i = 0; i < j3.at("casillas").at("triples").size(); i++)
+	{
+		cout << "\t\tX: " << j3.at("casillas").at("triples")[i].at("x") << endl;
+		cout << "\t\tY: " << j3.at("casillas").at("triples")[i].at("y") << endl;
+	}
 }
 
 Menu::~Menu()
@@ -178,7 +199,6 @@ void Menu::choosePlayer()
 
 void Menu::startGame()
 {
-
 	DoubleList lettersPlayerOne;
 	DoubleList lettersPlayerTwo;
 	for (int i = 0; i < 7; i++)
@@ -187,6 +207,6 @@ void Menu::startGame()
 		lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
 	}
 
-	lettersPlayerOne.report();
-	lettersPlayerTwo.report();
+	/*lettersPlayerOne.report();
+	lettersPlayerTwo.report();*/
 }
