@@ -23,6 +23,8 @@ public:
 
 	bool addNode(Player *player);
 
+	Player *search(string name);
+
 	void report();
 
 	void reportInOrder();

@@ -155,7 +155,7 @@ void Queue::pushLetter()
 		for (int i = index; i < length - 1; ++i)
 		{
 			letters[i] = letters[i + 1];
-			cout << letters[i] << " ";
+			// cout << letters[i] << " ";
 		}
 		length--;
 	}

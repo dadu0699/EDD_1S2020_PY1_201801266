@@ -63,6 +63,32 @@ bool BinarySearchTree::addNode(Player *player)
 	return false;
 }
 
+Player *BinarySearchTree::search(string name)
+{
+	if (!isEmpty())
+	{
+		BinarySearchTreeNode *auxiliaryNode = root;
+		while (auxiliaryNode->getPlayer()->getName() != name)
+		{
+			if (name < auxiliaryNode->getPlayer()->getName())
+			{
+				auxiliaryNode = auxiliaryNode->getLeftNode();
+			}
+			else
+			{
+				auxiliaryNode = auxiliaryNode->getRightNode();
+			}
+
+			if (auxiliaryNode == nullptr)
+			{
+				return nullptr;
+			}
+		}
+		return auxiliaryNode->getPlayer();
+	}
+	return nullptr;
+}
+
 string BinarySearchTree::printBinarySearchTree(BinarySearchTreeNode *root)
 {
 	string myfile;

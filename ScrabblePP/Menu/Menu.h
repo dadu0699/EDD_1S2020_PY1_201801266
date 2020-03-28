@@ -1,5 +1,5 @@
-#ifndef SCRABBLE_MENU_H
-#define SCRABBLE_MENU_H
+#ifndef SCRABBLE___MENU_H
+#define SCRABBLE___MENU_H
 
 #include "../Structures/SparseMatrix/SparseMatrix.h"
 #include "../Structures/CircularDoublyLinkedList/CircularDoubleList.h"
@@ -13,17 +13,22 @@ class Menu
 {
 private:
 	int boardDimensions;
-	SparseMatrix board;
-	CircularDoubleList dictionary;
-	Queue letters;
-	BinarySearchTree players;
-	SortedSimpleList scoreBoard;
+	SparseMatrix *board;
+	CircularDoubleList *dictionary;
+	Queue *letters;
+	BinarySearchTree *players;
+	SortedSimpleList *scoreBoard;
+	Player *playerOne;
+	Player *playerTwo;
+
+	void startGame();
+	void choosePlayer();
 
 public:
 	Menu();
 	~Menu();
 
-	void StartGame();
+	void principal();
 };
 
-#endif // SCRABBLE_MENU_H
+#endif // SCRABBLE___MENU_H
