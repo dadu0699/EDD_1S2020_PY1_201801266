@@ -1,10 +1,7 @@
 #ifndef SCRABBLE___CIRCULARDOUBLELIST_H
 #define SCRABBLE___CIRCULARDOUBLELIST_H
 
-#include <iostream>
 #include "CircularDoubleNode.h"
-
-using namespace std;
 
 class CircularDoubleList
 {

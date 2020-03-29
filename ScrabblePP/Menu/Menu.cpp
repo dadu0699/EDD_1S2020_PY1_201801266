@@ -19,6 +19,9 @@ Menu::Menu()
 
 	boardDimensions = 0;
 	turn = false;
+	finish = false;
+
+	principal();
 }
 
 Menu::~Menu()
@@ -191,10 +194,16 @@ void Menu::choosePlayer()
 void Menu::startGame()
 {
 	system("CLS");
+	readJSON("properties.json");
 	DoubleList lettersPlayerOne;
 	DoubleList lettersPlayerTwo;
-
-	readJSON("properties.json");
+	DoubleList auxLetters;
+	int option;
+	char tile;
+	string word;
+	int positionX;
+	int positionY;
+	int postions[25][2];
 
 	for (int i = 0; i < 7; i++)
 	{
@@ -202,18 +211,127 @@ void Menu::startGame()
 		lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
 	}
 
-	while (true)
+	while (!finish)
 	{
+		word.clear();
 		if (turn)
 		{
+			cout << endl
+				 << "\tTurno jugador 1: "
+				 << playerOne->getName() << endl;
+			system("pause");
 			lettersPlayerOne.report();
+		}
+		else
+		{
+			cout << endl
+				 << "\tTurno jugador 2: "
+				 << playerTwo->getName() << endl;
+			system("pause");
+			lettersPlayerTwo.report();
+		}
 
+		cout << endl
+			 << "\t1. Agregar ficha";
+		cout << endl
+			 << "\t2. Intercambiar fichas";
+		cout << endl
+			 << "\t3. Terminar Partida";
+		cout << endl
+			 << "\t >> ";
+		cin >> option;
+
+		if (turn)
+		{
+			// Player One
+			switch (option)
+			{
+			case 1:
+				do
+				{
+					cout << endl
+						<< "\t >> ficha: ";
+					cin >> tile;
+					cout << endl
+						<< "\t >> Posicion x: ";
+					cin >> positionX;
+					cout << endl
+						<< "\t >> Posicion y: ";
+					cin >> positionY;
+					if (lettersPlayerOne.searchNode(tile) != nullptr)
+					{
+						if (positionX <= boardDimensions && positionY <= boardDimensions)
+						{
+							word +=tile;
+							postions[word.length()][0] = positionX;
+							postions[word.length()][1] = positionY;
+
+							auxLetters.addLastNode(lettersPlayerOne.searchNode(tile)->getLetter());
+							lettersPlayerOne.deleteSpecificNode(tile);
+						}
+						else
+						{
+							cout << endl
+								<< "\t Coordenada fuera de rango: (" << positionX << "," << positionY << ")";
+						}
+					}
+					else
+					{
+						cout << endl
+							<< "\t Ficha no encontrada: " << tile;
+					}
+
+
+					cout << endl
+						<< "\t >> Desea continuar (s/n): ";
+					cin >> tile;
+				} while (tile == 's');
+
+				if (dictionary->searchNode(word) != nullptr)
+				{
+					for (int i = 0; i < word.length() - 1; i++)
+					{
+						board->addNode(postions[i][0], postions[i][1], 1, to_string(word[i]));
+					}
+					board->report();
+				}
+				else
+				{
+					cout << endl
+						<< "\t Palabra no encontrada: " << word;
+
+					while (!auxLetters.isEmpty())
+					{
+						lettersPlayerOne.addLastNode(auxLetters.getLastNode()->getLetter());
+						auxLetters.deleteLastNode();
+					}
+				}
+				break;
+			case 2:
+				break;
+			case 3:
+				finish = true;
+				break;
+			default:
+				break;
+			}
 			turn = !turn;
 		}
 		else
 		{
-			lettersPlayerTwo.report();
-
+			// Player Two
+			switch (option)
+			{
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				finish = true;
+				break;
+			default:
+				break;
+			}
 			turn = !turn;
 		}
 	}

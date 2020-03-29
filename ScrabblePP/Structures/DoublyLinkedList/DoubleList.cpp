@@ -14,6 +14,15 @@ DoubleList::~DoubleList()
 {
 }
 
+DoubleNode* DoubleList::getFirstNode() const
+{
+    return firstNode;
+}
+DoubleNode* DoubleList::getLastNode() const
+{
+    return lastNode;
+}
+
 bool DoubleList::isEmpty()
 {
     return firstNode == nullptr;
@@ -62,13 +71,16 @@ void DoubleList::deleteLastNode()
 {
     if (!isEmpty())
     {
-        DoubleNode *auxiliaryNode = firstNode;
-        while (auxiliaryNode->getNextNode() != lastNode)
+        if (firstNode->getNextNode() == nullptr)
         {
-            auxiliaryNode = auxiliaryNode->getNextNode();
+            firstNode = nullptr;
         }
-        lastNode = auxiliaryNode;
-        lastNode->setNextNode(nullptr);
+        else
+        {
+            lastNode = lastNode->getPreviousNode();
+            delete (lastNode->getNextNode());
+            lastNode->setNextNode(nullptr);
+        }
     }
 }
 
@@ -79,6 +91,7 @@ void DoubleList::deleteSpecificNode(char letter)
         if (firstNode == lastNode && letter == firstNode->getLetter()->getCharacter())
         {
             firstNode = nullptr;
+            lastNode = nullptr;
         }
         else if (letter == firstNode->getLetter()->getCharacter())
         {

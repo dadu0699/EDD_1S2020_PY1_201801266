@@ -21,17 +21,17 @@ private:
 	Player *playerOne;
 	Player *playerTwo;
 	bool turn;
+	bool finish;
 
-	void startGame();
+	void principal();
 	void choosePlayer();
 	void readJSON(string route);
+	void startGame();
 	void assignTurn();
 
 public:
 	Menu();
 	~Menu();
-
-	void principal();
 };
 
 #endif // SCRABBLE___MENU_H

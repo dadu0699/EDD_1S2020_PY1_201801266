@@ -9,17 +9,20 @@ private:
     DoubleNode *firstNode;
     DoubleNode *lastNode;
 
-    bool isEmpty();
-
 public:
     DoubleList();
     ~DoubleList();
+
+    DoubleNode* getFirstNode() const;
+    DoubleNode* getLastNode() const;
+
     void addFirstNode(Letter *letter);
     void addLastNode(Letter *letter);
     void deleteFirstNode();
     void deleteLastNode();
     void deleteSpecificNode(char letter);
     DoubleNode *searchNode(char letter);
+    bool isEmpty();
     void report();
 };
 

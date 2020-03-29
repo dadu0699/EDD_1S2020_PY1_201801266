@@ -113,7 +113,7 @@ CircularDoubleNode *CircularDoubleList::searchNode(string word)
 	CircularDoubleNode *auxiliaryNode = firstNode;
 	do
 	{
-		if (auxiliaryNode->getWord() == word)
+		if (word.compare(auxiliaryNode->getWord()))
 		{
 			return auxiliaryNode;
 		}
