@@ -20,10 +20,12 @@ private:
 	SortedSimpleList *scoreBoard;
 	Player *playerOne;
 	Player *playerTwo;
+	bool turn;
 
 	void startGame();
 	void choosePlayer();
 	void readJSON(string route);
+	void assignTurn();
 
 public:
 	Menu();

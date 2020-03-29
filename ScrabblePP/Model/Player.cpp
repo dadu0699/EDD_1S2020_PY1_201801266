@@ -1,9 +1,8 @@
 #include "Player.h"
 
-Player::Player(string name, bool turn)
+Player::Player(string name)
 {
 	this->name = name;
-	this->turn = turn;
 	scores = new SimpleList();
 }
 
@@ -24,14 +23,4 @@ void Player::setName(string name)
 SimpleList *Player::getScores() const
 {
 	return scores;
-}
-
-bool Player::getTurn()
-{
-	return turn;
-}
-
-void Player::setTurn(bool turn)
-{
-	this->turn = turn;
 }

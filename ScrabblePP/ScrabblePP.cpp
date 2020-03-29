@@ -7,9 +7,6 @@ using namespace std;
 
 int main() {
     Menu menu;
-
-    //menu.principal();
-
-    // system("pause");
+    menu.principal();
     return 0;
 }

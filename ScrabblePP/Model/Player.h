@@ -11,19 +11,15 @@ class Player
 private:
 	string name;
 	SimpleList *scores;
-	bool turn;
 
 public:
-	Player(string name, bool turn);
+	Player(string name);
 	~Player();
 
 	string getName();
 	void setName(string name);
 
 	SimpleList *getScores() const;
-
-	bool getTurn();
-	void setTurn(bool turn);
 };
 
 #endif // SCRABBLE_PLAYER_H

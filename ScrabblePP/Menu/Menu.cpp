@@ -1,6 +1,8 @@
 #include "Menu.h"
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
+#include <time.h>
 // #include <typeinfo>
 #include "nlohmann/json.hpp"
 
@@ -9,7 +11,14 @@ using json = nlohmann::json;
 
 Menu::Menu()
 {
-	readJSON("");
+	board = new SparseMatrix();
+	dictionary = new CircularDoubleList();
+	letters = new Queue();
+	players = new BinarySearchTree();
+	scoreBoard = new SortedSimpleList();
+
+	boardDimensions = 0;
+	turn = false;
 }
 
 Menu::~Menu()
@@ -18,12 +27,6 @@ Menu::~Menu()
 
 void Menu::principal()
 {
-	board = new SparseMatrix();
-	dictionary = new CircularDoubleList();
-	letters = new Queue();
-	players = new BinarySearchTree();
-	scoreBoard = new SortedSimpleList();
-
 	int option;
 	bool loop = true;
 	while (loop)
@@ -45,7 +48,10 @@ void Menu::principal()
 		switch (option)
 		{
 		case 1:
-			startGame();
+			if (playerOne != nullptr && playerTwo != nullptr)
+			{
+				startGame();
+			}
 			break;
 		case 2:
 			choosePlayer();
@@ -108,7 +114,6 @@ void Menu::choosePlayer()
 				}
 				else
 				{
-					playerOne->setTurn(true);
 					flagPlayerOne = true;
 				}
 			}
@@ -132,7 +137,7 @@ void Menu::choosePlayer()
 		case 2:
 			if (!flagPlayerOne)
 			{
-				playerOne = new Player("", true);
+				playerOne = new Player("");
 				cout << endl
 					 << "\t >> Jugador 1: ";
 				cin >> namePlayerOne;
@@ -146,7 +151,7 @@ void Menu::choosePlayer()
 
 			if (!flagPlayerTwo)
 			{
-				playerTwo = new Player("", false);
+				playerTwo = new Player("");
 				cout << endl
 					 << "\t >> Jugador 2: ";
 				cin >> namePlayerTwo;
@@ -160,6 +165,9 @@ void Menu::choosePlayer()
 			break;
 		case 3:
 			players->report();
+			players->reportPreOrder();
+			players->reportInOrder();
+			players->reportPostOrder();
 			return;
 		default:
 			cout << endl
@@ -182,49 +190,94 @@ void Menu::choosePlayer()
 
 void Menu::startGame()
 {
+	system("CLS");
 	DoubleList lettersPlayerOne;
 	DoubleList lettersPlayerTwo;
+
+	readJSON("properties.json");
+
 	for (int i = 0; i < 7; i++)
 	{
 		lettersPlayerOne.addLastNode(letters->pop()->getLetter());
 		lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
 	}
 
-	/*lettersPlayerOne.report();
-	lettersPlayerTwo.report();*/
+	while (true)
+	{
+		if (turn)
+		{
+			lettersPlayerOne.report();
+
+			turn = !turn;
+		}
+		else
+		{
+			lettersPlayerTwo.report();
+
+			turn = !turn;
+		}
+	}
 }
 
 void Menu::readJSON(string route)
 {
-	ifstream jsonFile("properties.json");
+	ifstream jsonFile(route);
 	if (jsonFile.is_open())
 	{
 		json jsonData;
 		jsonFile >> jsonData;
 
-		cout << "Dimension: " << jsonData.at("dimension") << endl;
+		int x;
+		int y;
+
+		boardDimensions = jsonData.at("dimension");
+		cout << "Dimension: " << boardDimensions << endl;
 		cout << "Casillas: " << endl;
 		cout << "\tDobles: " << endl;
 		for (size_t i = 0; i < jsonData.at("casillas").at("dobles").size(); i++)
 		{
-			cout << "\t\tX: " << jsonData.at("casillas").at("dobles")[i].at("x") << endl;
-			cout << "\t\tY: " << jsonData.at("casillas").at("dobles")[i].at("y") << endl;
+			x = jsonData.at("casillas").at("dobles")[i].at("x");
+			y = jsonData.at("casillas").at("dobles")[i].at("y");
+			board->addNode(x, y, 2, "");
+
+			cout << "\t\tX: " << x << endl;
+			cout << "\t\tY: " << y << endl;
 		}
 		cout << "\tTriples: " << endl;
 		for (size_t i = 0; i < jsonData.at("casillas").at("triples").size(); i++)
 		{
-			cout << "\t\tX: " << jsonData.at("casillas").at("triples")[i].at("x") << endl;
-			cout << "\t\tY: " << jsonData.at("casillas").at("triples")[i].at("y") << endl;
+			x = jsonData.at("casillas").at("triples")[i].at("x");
+			y = jsonData.at("casillas").at("triples")[i].at("y");
+			board->addNode(x, y, 3, "");
+
+			cout << "\t\tX: " << x << endl;
+			cout << "\t\tY: " << y << endl;
 		}
 
 		cout << "Diccionario: " << endl;
 		for (size_t i = 0; i < jsonData.at("diccionario").size(); i++)
 		{
 			cout << "\tPalabra: " << jsonData.at("diccionario")[i].at("palabra") << endl;
+			dictionary->addNode(jsonData.at("diccionario")[i].at("palabra"));
 		}
+		dictionary->report();
+		board->report();
 	}
 	else
 	{
 		cout << "Unable to open file" << endl;
+	}
+}
+
+void Menu::assignTurn()
+{
+	srand(time(NULL));
+	if (rand() % 2 == 2)
+	{
+		turn = true;
+	}
+	else
+	{
+		turn = false;
 	}
 }
