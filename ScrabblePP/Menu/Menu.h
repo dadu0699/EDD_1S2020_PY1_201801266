@@ -23,6 +23,7 @@ private:
 
 	void startGame();
 	void choosePlayer();
+	void readJSON(string route);
 
 public:
 	Menu();

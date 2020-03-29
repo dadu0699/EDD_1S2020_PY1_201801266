@@ -1,32 +1,15 @@
 #include "Menu.h"
 #include <iostream>
-#include "nlohmann/json.hpp"
 #include <fstream>
-#include <typeinfo>
+// #include <typeinfo>
+#include "nlohmann/json.hpp"
 
 using namespace std;
 using json = nlohmann::json;
 
 Menu::Menu()
 {
-	ifstream i("properties.json");
-	json j3;
-	i >> j3;
-
-	cout << "Dimensiones: " << j3.at("dimension") << endl;
-	cout << "Casillas: " << endl;
-	cout << "\tDobles: " << endl;
-	for (size_t i = 0; i < j3.at("casillas").at("dobles").size(); i++)
-	{
-		cout << "\t\tX: " << j3.at("casillas").at("dobles")[i].at("x") << endl;
-		cout << "\t\tY: " << j3.at("casillas").at("dobles")[i].at("y") << endl;
-	}
-	cout << "\tTriples: " << endl;
-	for (size_t i = 0; i < j3.at("casillas").at("triples").size(); i++)
-	{
-		cout << "\t\tX: " << j3.at("casillas").at("triples")[i].at("x") << endl;
-		cout << "\t\tY: " << j3.at("casillas").at("triples")[i].at("y") << endl;
-	}
+	readJSON("");
 }
 
 Menu::~Menu()
@@ -209,4 +192,39 @@ void Menu::startGame()
 
 	/*lettersPlayerOne.report();
 	lettersPlayerTwo.report();*/
+}
+
+void Menu::readJSON(string route)
+{
+	ifstream jsonFile("properties.json");
+	if (jsonFile.is_open())
+	{
+		json jsonData;
+		jsonFile >> jsonData;
+
+		cout << "Dimension: " << jsonData.at("dimension") << endl;
+		cout << "Casillas: " << endl;
+		cout << "\tDobles: " << endl;
+		for (size_t i = 0; i < jsonData.at("casillas").at("dobles").size(); i++)
+		{
+			cout << "\t\tX: " << jsonData.at("casillas").at("dobles")[i].at("x") << endl;
+			cout << "\t\tY: " << jsonData.at("casillas").at("dobles")[i].at("y") << endl;
+		}
+		cout << "\tTriples: " << endl;
+		for (size_t i = 0; i < jsonData.at("casillas").at("triples").size(); i++)
+		{
+			cout << "\t\tX: " << jsonData.at("casillas").at("triples")[i].at("x") << endl;
+			cout << "\t\tY: " << jsonData.at("casillas").at("triples")[i].at("y") << endl;
+		}
+
+		cout << "Diccionario: " << endl;
+		for (size_t i = 0; i < jsonData.at("diccionario").size(); i++)
+		{
+			cout << "\tPalabra: " << jsonData.at("diccionario")[i].at("palabra") << endl;
+		}
+	}
+	else
+	{
+		cout << "Unable to open file" << endl;
+	}
 }
