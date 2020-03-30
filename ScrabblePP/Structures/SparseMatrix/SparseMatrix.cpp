@@ -270,7 +270,7 @@ void SparseMatrix::report()
             {
                 myfile << "R" << rowHeaders->getY();
                 myfile << "[label = \"(" << rowHeaders->getX() << "," << rowHeaders->getY() << ")\"";
-                myfile << "width = 1.5 style = filled, fillcolor = bisque1, group = 1 ];";
+                myfile << "width = 1.5 style = filled, fillcolor = bisque, group = 1 ];";
                 rowHeaders = rowHeaders->getDownNode();
             }
 

@@ -76,11 +76,9 @@ void Menu::choosePlayer()
 {
 	string namePlayerOne;
 	bool flagPlayerOne = false;
-	DoubleList lettersPlayerOne;
 
 	string namePlayerTwo;
 	bool flagPlayerTwo = false;
-	DoubleList lettersPlayerTwo;
 
 	int option;
 	bool loop = true;
@@ -109,7 +107,7 @@ void Menu::choosePlayer()
 				playerOne = players->search(namePlayerOne);
 				if (playerOne == nullptr)
 				{
-					cout << "\t El juador " << namePlayerOne << " no se ha registrado previamente" << endl;
+					cout << "\t El jugador " << namePlayerOne << " no se ha registrado previamente" << endl;
 				}
 				else
 				{
@@ -124,7 +122,7 @@ void Menu::choosePlayer()
 				playerTwo = players->search(namePlayerTwo);
 				if (playerTwo == nullptr)
 				{
-					cout << "\t El juador: " << namePlayerTwo << " no se ha registrado previamente" << endl;
+					cout << "\t El jugador: " << namePlayerTwo << " no se ha registrado previamente" << endl;
 				}
 				else
 				{
@@ -179,7 +177,7 @@ void Menu::choosePlayer()
 			}
 			playerOne = nullptr;
 			cout << endl
-				<< "\t";
+				 << "\t";
 			system("pause");
 			return;
 		default:
@@ -524,23 +522,23 @@ void Menu::startGame()
 		cout << endl
 			 << "\t >> Ganador: " << playerOne->getName() << " " << playerOneScore;
 		cout << endl
-			<< "\t >> Segundo: " << playerTwo->getName() << " " << playerTwoScore;
+			 << "\t >> Segundo: " << playerTwo->getName() << " " << playerTwoScore;
 	}
 	else if (playerOneScore < playerTwoScore)
 	{
 		cout << endl
 			 << "\t >> Ganador: " << playerTwo->getName() << " " << playerTwoScore;
 		cout << endl
-			<< "\t >> Segundo: " << playerOne->getName() << " " << playerOneScore;
+			 << "\t >> Segundo: " << playerOne->getName() << " " << playerOneScore;
 	}
 	else
 	{
 		cout << endl
 			 << "\t >> Empate";
 		cout << endl
-			<< "\t >> Jugador 1: " << playerOne->getName() << " " << playerOneScore;
+			 << "\t >> Jugador 1: " << playerOne->getName() << " " << playerOneScore;
 		cout << endl
-			<< "\t >> Jugador 2: " << playerTwo->getName() << " " << playerTwoScore;
+			 << "\t >> Jugador 2: " << playerTwo->getName() << " " << playerTwoScore;
 	}
 	cout << endl
 		 << "\t";

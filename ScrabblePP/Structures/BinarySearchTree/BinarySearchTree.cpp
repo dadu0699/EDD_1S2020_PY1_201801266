@@ -278,8 +278,10 @@ void BinarySearchTree::scoreBoard(BinarySearchTreeNode *root)
 	if (root != nullptr)
 	{
 		scoreBoard(root->getLeftNode());
-		indexNode++;
-		scoreBoardList->addFirstNode(root->getPlayer()->getName(), root->getPlayer()->getScores()->getFirstNode()->getScore());
+		if (root->getPlayer()->getScores()->getFirstNode() != nullptr)
+		{
+			scoreBoardList->addFirstNode(root->getPlayer()->getName(), root->getPlayer()->getScores()->getFirstNode()->getScore());
+		}
 		scoreBoard(root->getRightNode());
 	}
 }

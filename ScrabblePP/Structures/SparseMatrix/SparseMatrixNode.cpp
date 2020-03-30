@@ -80,6 +80,7 @@ SparseMatrixNode *SparseMatrixNode::getUpNode() const
 {
 	return upNode;
 }
+
 void SparseMatrixNode::setUpNode(SparseMatrixNode *upNode)
 {
 	this->upNode = upNode;
