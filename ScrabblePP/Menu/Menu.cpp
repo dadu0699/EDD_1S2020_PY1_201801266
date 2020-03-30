@@ -200,7 +200,8 @@ void Menu::startGame()
 	DoubleList auxLetters;
 	int option;
 	char tile;
-	string word;
+	string word = "";
+	string cW;
 	int positionX;
 	int positionY;
 	int postions[25][2];
@@ -218,16 +219,14 @@ void Menu::startGame()
 		{
 			cout << endl
 				 << "\tTurno jugador 1: "
-				 << playerOne->getName() << endl;
-			system("pause");
+				 << playerOne->getName();
 			lettersPlayerOne.report();
 		}
 		else
 		{
 			cout << endl
 				 << "\tTurno jugador 2: "
-				 << playerTwo->getName() << endl;
-			system("pause");
+				 << playerTwo->getName();
 			lettersPlayerTwo.report();
 		}
 
@@ -250,6 +249,110 @@ void Menu::startGame()
 				do
 				{
 					cout << endl
+						 << "\t >> ficha: ";
+					cin >> tile;
+					cout << endl
+						 << "\t >> Posicion x: ";
+					cin >> positionX;
+					cout << endl
+						 << "\t >> Posicion y: ";
+					cin >> positionY;
+					if (lettersPlayerOne.searchNode(tile) != nullptr)
+					{
+						if (positionX <= boardDimensions && positionX > 0
+							&& positionY <= boardDimensions && positionY > 0)
+						{
+							word += tile;
+							postions[word.length() - 1][0] = positionX;
+							postions[word.length() - 1][1] = positionY;
+
+							auxLetters.addLastNode(lettersPlayerOne.searchNode(tile)->getLetter());
+							lettersPlayerOne.deleteSpecificNode(tile);
+						}
+						else
+						{
+							cout << endl
+								 << "\t Coordenada fuera de rango: (" << positionX << "," << positionY << ")";
+						}
+					}
+					else
+					{
+						cout << endl
+							 << "\t Ficha no encontrada: " << tile;
+					}
+
+					cout << endl
+						 << "\t >> Desea continuar (s/n): ";
+					cin >> tile;
+				} while (tile == 's');
+
+				if (dictionary->searchNode(word) != nullptr)
+				{
+					for (int i = 0; i < word.length(); i++)
+					{
+						cW = word.at(i);
+						board->addNode(postions[i][0], postions[i][1], 1, cW);
+					}
+					board->report();
+				}
+				else
+				{
+					cout << endl
+						 << "\t Palabra no encontrada: " << word;
+
+					while (!auxLetters.isEmpty())
+					{
+						lettersPlayerOne.addLastNode(auxLetters.getLastNode()->getLetter());
+						auxLetters.deleteLastNode();
+					}
+				}
+				break;
+			case 2:
+				do
+				{
+					cout << endl
+						<< "\t >> ficha: ";
+					cin >> tile;
+					if (lettersPlayerOne.searchNode(tile) != nullptr)
+					{
+						letters->push(lettersPlayerOne.searchNode(tile)->getLetter());
+						lettersPlayerOne.deleteSpecificNode(tile);
+						lettersPlayerOne.addLastNode(letters->pop()->getLetter());
+					}
+					else
+					{
+						cout << endl
+							<< "\t Ficha no encontrada: " << tile;
+					}
+
+					cout << endl
+						<< "\t >> Desea continuar (s/n): ";
+					cin >> tile;
+				} while (tile == 's');
+				lettersPlayerOne.report();
+				cout<< endl << "\t";
+				system("pause");
+				break;
+			case 3:
+				finish = true;
+				break;
+			default:
+				cout << endl
+					 << "\tOPCION INCORRECTA";
+				cout << endl;
+				break;
+			}
+			turn = !turn;
+		}
+		else
+		{
+			// Player Two
+			switch (option)
+			{
+			case 1:
+				do
+				{
+					cout << endl
 						<< "\t >> ficha: ";
 					cin >> tile;
 					cout << endl
@@ -258,16 +361,17 @@ void Menu::startGame()
 					cout << endl
 						<< "\t >> Posicion y: ";
 					cin >> positionY;
-					if (lettersPlayerOne.searchNode(tile) != nullptr)
+					if (lettersPlayerTwo.searchNode(tile) != nullptr)
 					{
-						if (positionX <= boardDimensions && positionY <= boardDimensions)
+						if (positionX <= boardDimensions && positionX > 0
+							&& positionY <= boardDimensions && positionY > 0)
 						{
-							word +=tile;
-							postions[word.length()][0] = positionX;
-							postions[word.length()][1] = positionY;
+							word += tile;
+							postions[word.length() - 1][0] = positionX;
+							postions[word.length() - 1][1] = positionY;
 
-							auxLetters.addLastNode(lettersPlayerOne.searchNode(tile)->getLetter());
-							lettersPlayerOne.deleteSpecificNode(tile);
+							auxLetters.addLastNode(lettersPlayerTwo.searchNode(tile)->getLetter());
+							lettersPlayerTwo.deleteSpecificNode(tile);
 						}
 						else
 						{
@@ -281,7 +385,6 @@ void Menu::startGame()
 							<< "\t Ficha no encontrada: " << tile;
 					}
 
-
 					cout << endl
 						<< "\t >> Desea continuar (s/n): ";
 					cin >> tile;
@@ -289,9 +392,10 @@ void Menu::startGame()
 
 				if (dictionary->searchNode(word) != nullptr)
 				{
-					for (int i = 0; i < word.length() - 1; i++)
+					for (int i = 0; i < word.length(); i++)
 					{
-						board->addNode(postions[i][0], postions[i][1], 1, to_string(word[i]));
+						cW = word.at(i);
+						board->addNode(postions[i][0], postions[i][1], 1, cW);
 					}
 					board->report();
 				}
@@ -302,34 +406,44 @@ void Menu::startGame()
 
 					while (!auxLetters.isEmpty())
 					{
-						lettersPlayerOne.addLastNode(auxLetters.getLastNode()->getLetter());
+						lettersPlayerTwo.addLastNode(auxLetters.getLastNode()->getLetter());
 						auxLetters.deleteLastNode();
 					}
 				}
 				break;
 			case 2:
+				do
+				{
+					cout << endl
+						<< "\t >> ficha: ";
+					cin >> tile;
+					if (lettersPlayerTwo.searchNode(tile) != nullptr)
+					{
+						letters->push(lettersPlayerTwo.searchNode(tile)->getLetter());
+						lettersPlayerTwo.deleteSpecificNode(tile);
+						lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
+					}
+					else
+					{
+						cout << endl
+							<< "\t Ficha no encontrada: " << tile;
+					}
+
+					cout << endl
+						<< "\t >> Desea continuar (s/n): ";
+					cin >> tile;
+				} while (tile == 's');
+				lettersPlayerTwo.report();
+				cout << endl << "\t";
+				system("pause");
 				break;
 			case 3:
 				finish = true;
 				break;
 			default:
-				break;
-			}
-			turn = !turn;
-		}
-		else
-		{
-			// Player Two
-			switch (option)
-			{
-			case 1:
-				break;
-			case 2:
-				break;
-			case 3:
-				finish = true;
-				break;
-			default:
+				cout << endl
+					<< "\tOPCION INCORRECTA";
+				cout << endl;
 				break;
 			}
 			turn = !turn;
@@ -390,7 +504,7 @@ void Menu::readJSON(string route)
 void Menu::assignTurn()
 {
 	srand(time(NULL));
-	if (rand() % 2 == 2)
+	if (rand() % 2 == 1)
 	{
 		turn = true;
 	}
