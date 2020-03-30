@@ -272,3 +272,21 @@ void BinarySearchTree::reportPostOrder()
 		cout << "Unable to open file";
 	}
 }
+
+void BinarySearchTree::scoreBoard(BinarySearchTreeNode *root)
+{
+	if (root != nullptr)
+	{
+		scoreBoard(root->getLeftNode());
+		indexNode++;
+		scoreBoardList->addFirstNode(root->getPlayer()->getName(), root->getPlayer()->getScores()->getFirstNode()->getScore());
+		scoreBoard(root->getRightNode());
+	}
+}
+
+void BinarySearchTree::scoreBoard()
+{
+	scoreBoardList = new SortedSimpleList();
+	scoreBoard(root);
+	scoreBoardList->report();
+}

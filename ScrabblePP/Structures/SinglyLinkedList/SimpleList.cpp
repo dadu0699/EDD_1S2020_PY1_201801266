@@ -19,6 +19,16 @@ bool SimpleList::isEmpty()
     return firstNode == nullptr;
 }
 
+SimpleNode* SimpleList::getFirstNode() const
+{
+    return firstNode;
+}
+
+SimpleNode* SimpleList::getLastNode() const
+{
+    return lastNode;
+}
+
 void SimpleList::addFirstNode(int score)
 {
     SimpleNode *node = new SimpleNode(score);

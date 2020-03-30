@@ -12,7 +12,6 @@ using json = nlohmann::json;
 Menu::Menu()
 {
 	players = new BinarySearchTree();
-	scoreBoard = new SortedSimpleList();
 
 	boardDimensions = 0;
 	turn = false;
@@ -56,7 +55,7 @@ void Menu::principal()
 			choosePlayer();
 			break;
 		case 3:
-			scoreBoard->report();
+			players->scoreBoard();
 			break;
 		case 4:
 			cout << endl
@@ -94,6 +93,8 @@ void Menu::choosePlayer()
 			 << "\t2. Agregar Jugador";
 		cout << endl
 			 << "\t3. Reporte Jugadores";
+		cout << endl
+			 << "\t4. Puntuacion Jugador";
 		cout << endl
 			 << "\t >> ";
 		cin >> option;
@@ -163,6 +164,23 @@ void Menu::choosePlayer()
 			players->reportPreOrder();
 			players->reportInOrder();
 			players->reportPostOrder();
+			return;
+		case 4:
+			cout << "\t >> Jugador: ";
+			cin >> namePlayerOne;
+			playerOne = players->search(namePlayerOne);
+			if (playerOne == nullptr)
+			{
+				cout << "\t El juador " << namePlayerOne << " no se ha registrado previamente" << endl;
+			}
+			else
+			{
+				playerOne->getScores()->report();
+			}
+			playerOne = nullptr;
+			cout << endl
+				<< "\t";
+			system("pause");
 			return;
 		default:
 			cout << endl
@@ -504,17 +522,25 @@ void Menu::startGame()
 	if (playerOneScore > playerTwoScore)
 	{
 		cout << endl
-			 << "\t >> Ganador: " << playerOne->getName();
+			 << "\t >> Ganador: " << playerOne->getName() << " " << playerOneScore;
+		cout << endl
+			<< "\t >> Segundo: " << playerTwo->getName() << " " << playerTwoScore;
 	}
 	else if (playerOneScore < playerTwoScore)
 	{
 		cout << endl
-			 << "\t >> Ganador: " << playerTwo->getName();
+			 << "\t >> Ganador: " << playerTwo->getName() << " " << playerTwoScore;
+		cout << endl
+			<< "\t >> Segundo: " << playerOne->getName() << " " << playerOneScore;
 	}
 	else
 	{
 		cout << endl
 			 << "\t >> Empate";
+		cout << endl
+			<< "\t >> Jugador 1: " << playerOne->getName() << " " << playerOneScore;
+		cout << endl
+			<< "\t >> Jugador 2: " << playerTwo->getName() << " " << playerTwoScore;
 	}
 	cout << endl
 		 << "\t";

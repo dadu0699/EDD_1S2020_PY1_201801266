@@ -2,11 +2,13 @@
 #define SCRABBLE___BINARYSEARCHTREE_H
 
 #include "BinarySearchTreeNode.h"
+#include "../SortedSinglyLinkedList/SortedSimpleList.h"
 
 class BinarySearchTree
 {
 private:
 	BinarySearchTreeNode *root;
+	SortedSimpleList *scoreBoardList;
 	int indexNode;
 
 	bool isEmpty();
@@ -15,6 +17,7 @@ private:
 	string printInOrder(BinarySearchTreeNode *root);
 	string printPreOrder(BinarySearchTreeNode *root);
 	string printPostOrder(BinarySearchTreeNode *root);
+	void scoreBoard(BinarySearchTreeNode *root);
 
 public:
 	BinarySearchTree();
@@ -32,6 +35,8 @@ public:
 	void reportPreOrder();
 
 	void reportPostOrder();
+
+	void scoreBoard();
 };
 
 #endif //SCRABBLE___BINARYSEARCHTREE_H

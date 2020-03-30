@@ -18,6 +18,10 @@ private:
 public:
     SimpleList();
     ~SimpleList();
+
+    SimpleNode* getFirstNode() const;
+    SimpleNode* getLastNode() const;
+
     void addFirstNode(int score);
     void addLastNode(int score);
     void readNodes();
