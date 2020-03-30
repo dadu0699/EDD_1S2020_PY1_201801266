@@ -12,6 +12,7 @@ Queue::Queue()
 	lastNode = nullptr;
 	length = 0;
 	pushLetter();
+	report();
 }
 
 Queue::~Queue()
@@ -65,7 +66,7 @@ void Queue::pushLetter()
 					  'U', 'U', 'U', 'U', 'U', 'D', 'D', 'D', 'D', 'D',
 					  'L', 'L', 'L', 'L', 'T', 'T', 'T', 'T', 'C', 'C', 'C', 'C',
 					  'G', 'G', 'B', 'B', 'M', 'M', 'P', 'P', 'H', 'H',
-					  'F', 'V', 'Y', 'Q', 'J', 'Ñ', 'X', 'Z'};
+					  'F', 'V', 'Y', 'Q', 'J', 'Ã‘', 'X', 'Z'};
 	int length = sizeof(letters);
 	int index = 0;
 
@@ -141,8 +142,8 @@ void Queue::pushLetter()
 		case 'J':
 			push(new Letter('J', 8));
 			break;
-		case 'Ñ':
-			push(new Letter('Ñ', 8));
+		case 'Ã‘':
+			push(new Letter('Ã‘', 8));
 			break;
 		case 'X':
 			push(new Letter('X', 8));
@@ -176,7 +177,8 @@ void Queue::report()
 
 			while (auxiliaryNode != nullptr)
 			{
-				myfile << "N" << index << " [label =\"" << auxiliaryNode->getLetter() << "\"];";
+				myfile << "N" << index << " [label =\"" << auxiliaryNode->getLetter()->getCharacter()
+					   << "*" << auxiliaryNode->getLetter()->getScore() << "\"];";
 				auxiliaryNode = auxiliaryNode->getNextNode();
 				index++;
 			}

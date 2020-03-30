@@ -63,8 +63,17 @@ void DoubleList::deleteFirstNode()
 {
     if (!isEmpty())
     {
-        firstNode = firstNode->getNextNode();
-        firstNode->setPreviousNode(nullptr);
+        if (firstNode->getNextNode() == nullptr)
+        {
+            firstNode = nullptr;
+            lastNode = nullptr;
+        }
+        else
+        {
+            firstNode = firstNode->getNextNode();
+            delete (firstNode->getPreviousNode());
+            firstNode->setPreviousNode(nullptr);
+        }
     }
 }
 
@@ -75,6 +84,7 @@ void DoubleList::deleteLastNode()
         if (firstNode->getNextNode() == nullptr)
         {
             firstNode = nullptr;
+            lastNode = nullptr;
         }
         else
         {

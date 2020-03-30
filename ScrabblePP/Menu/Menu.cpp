@@ -13,7 +13,6 @@ Menu::Menu()
 {
 	board = new SparseMatrix();
 	dictionary = new CircularDoubleList();
-	letters = new Queue();
 	players = new BinarySearchTree();
 	scoreBoard = new SortedSimpleList();
 
@@ -192,6 +191,7 @@ void Menu::choosePlayer()
 void Menu::startGame()
 {
 	system("CLS");
+	letters = new Queue();
 	readJSON("properties.json");
 	DoubleList lettersPlayerOne;
 	DoubleList lettersPlayerTwo;
@@ -293,13 +293,14 @@ void Menu::startGame()
 						if (board->getNode(postions[i][0], postions[i][1]) != nullptr)
 						{
 							board->getNode(postions[i][0], postions[i][1])->setData(cW);
-							playerOneScore += board->getNode(postions[i][0], postions[i][1])->getScore();
+							playerOneScore += board->getNode(postions[i][0], postions[i][1])->getScore() * auxLetters.getFirstNode()->getLetter()->getScore();
 						}
 						else
 						{
 							board->addNode(postions[i][0], postions[i][1], 1, cW);
-							playerOneScore++;
+							playerOneScore += auxLetters.getFirstNode()->getLetter()->getScore();
 						}
+						auxLetters.deleteFirstNode();
 						lettersPlayerOne.addLastNode(letters->pop()->getLetter());
 					}
 					board->report();
@@ -352,6 +353,7 @@ void Menu::startGame()
 				cout << endl;
 				break;
 			}
+			letters->report();
 			turn = !turn;
 		}
 		else
@@ -407,13 +409,14 @@ void Menu::startGame()
 						if (board->getNode(postions[i][0], postions[i][1]) != nullptr)
 						{
 							board->getNode(postions[i][0], postions[i][1])->setData(cW);
-							playerTwoScore += board->getNode(postions[i][0], postions[i][1])->getScore();
+							playerTwoScore += board->getNode(postions[i][0], postions[i][1])->getScore() * auxLetters.getFirstNode()->getLetter()->getScore();
 						}
 						else
 						{
 							board->addNode(postions[i][0], postions[i][1], 1, cW);
-							playerTwoScore++;
+							playerTwoScore += auxLetters.getFirstNode()->getLetter()->getScore();
 						}
+						auxLetters.deleteFirstNode();
 						lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
 					}
 					board->report();
@@ -466,6 +469,7 @@ void Menu::startGame()
 				cout << endl;
 				break;
 			}
+			letters->report();
 			turn = !turn;
 		}
 	}
