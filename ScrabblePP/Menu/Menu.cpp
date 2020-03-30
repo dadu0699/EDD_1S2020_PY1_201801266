@@ -11,14 +11,11 @@ using json = nlohmann::json;
 
 Menu::Menu()
 {
-	board = new SparseMatrix();
-	dictionary = new CircularDoubleList();
 	players = new BinarySearchTree();
 	scoreBoard = new SortedSimpleList();
 
 	boardDimensions = 0;
 	turn = false;
-	finish = false;
 
 	principal();
 }
@@ -111,7 +108,7 @@ void Menu::choosePlayer()
 				playerOne = players->search(namePlayerOne);
 				if (playerOne == nullptr)
 				{
-					cout << "\t El juador " << namePlayerOne << " no se ha registrado previamente";
+					cout << "\t El juador " << namePlayerOne << " no se ha registrado previamente" << endl;
 				}
 				else
 				{
@@ -126,7 +123,7 @@ void Menu::choosePlayer()
 				playerTwo = players->search(namePlayerTwo);
 				if (playerTwo == nullptr)
 				{
-					cout << "\t El juador: " << namePlayerTwo << " no se ha registrado previamente";
+					cout << "\t El juador: " << namePlayerTwo << " no se ha registrado previamente" << endl;
 				}
 				else
 				{
@@ -138,28 +135,26 @@ void Menu::choosePlayer()
 			if (!flagPlayerOne)
 			{
 				playerOne = new Player("");
-				cout << endl
-					 << "\t >> Jugador 1: ";
+				cout << "\t >> Jugador 1: ";
 				cin >> namePlayerOne;
 				playerOne->setName(namePlayerOne);
 				flagPlayerOne = players->addNode(playerOne);
 				if (!flagPlayerOne)
 				{
-					cout << "\t El juador " << namePlayerOne << " se ha registrado previamente";
+					cout << "\t El juador " << namePlayerOne << " se ha registrado previamente" << endl;
 				}
 			}
 
 			if (!flagPlayerTwo)
 			{
 				playerTwo = new Player("");
-				cout << endl
-					 << "\t >> Jugador 2: ";
+				cout << "\t >> Jugador 2: ";
 				cin >> namePlayerTwo;
 				playerTwo->setName(namePlayerTwo);
 				flagPlayerTwo = players->addNode(playerTwo);
 				if (!flagPlayerTwo)
 				{
-					cout << "\t El juador: " << namePlayerTwo << " se ha registrado previamente";
+					cout << "\t El juador: " << namePlayerTwo << " se ha registrado previamente" << endl;
 				}
 			}
 			break;
@@ -191,6 +186,8 @@ void Menu::choosePlayer()
 void Menu::startGame()
 {
 	system("CLS");
+	board = new SparseMatrix();
+	dictionary = new CircularDoubleList();
 	letters = new Queue();
 	readJSON("properties.json");
 	DoubleList lettersPlayerOne;
@@ -205,6 +202,9 @@ void Menu::startGame()
 	int postions[25][2];
 	int playerOneScore = 0;
 	int playerTwoScore = 0;
+	int coordinateX = boardDimensions / 2;
+	int coordinateY = boardDimensions / 2;
+	bool finish = false;
 
 	for (int i = 0; i < 7; i++)
 	{
@@ -261,12 +261,24 @@ void Menu::startGame()
 					{
 						if (positionX <= boardDimensions && positionX > 0 && positionY <= boardDimensions && positionY > 0)
 						{
-							word += tile;
-							postions[word.length() - 1][0] = positionX;
-							postions[word.length() - 1][1] = positionY;
+							if (positionX >= coordinateX && positionY >= coordinateY)
+							{
+								word += tile;
+								postions[word.length() - 1][0] = positionX;
+								postions[word.length() - 1][1] = positionY;
 
-							auxLetters.addLastNode(lettersPlayerOne.searchNode(tile)->getLetter());
-							lettersPlayerOne.deleteSpecificNode(tile);
+								auxLetters.addLastNode(lettersPlayerOne.searchNode(tile)->getLetter());
+								lettersPlayerOne.deleteSpecificNode(tile);
+
+								coordinateX = positionX;
+								coordinateY = positionY;
+							}
+							else
+							{
+								cout << endl
+									 << "\t Coordenada fuera de rango: (" << positionX << ","
+									 << positionY << ") para formar una palbra de D-I o Ar-Ab";
+							}
 						}
 						else
 						{
@@ -353,8 +365,6 @@ void Menu::startGame()
 				cout << endl;
 				break;
 			}
-			letters->report();
-			turn = !turn;
 		}
 		else
 		{
@@ -377,12 +387,24 @@ void Menu::startGame()
 					{
 						if (positionX <= boardDimensions && positionX > 0 && positionY <= boardDimensions && positionY > 0)
 						{
-							word += tile;
-							postions[word.length() - 1][0] = positionX;
-							postions[word.length() - 1][1] = positionY;
+							if (positionX >= coordinateX && positionY >= coordinateY)
+							{
+								word += tile;
+								postions[word.length() - 1][0] = positionX;
+								postions[word.length() - 1][1] = positionY;
 
-							auxLetters.addLastNode(lettersPlayerTwo.searchNode(tile)->getLetter());
-							lettersPlayerTwo.deleteSpecificNode(tile);
+								auxLetters.addLastNode(lettersPlayerTwo.searchNode(tile)->getLetter());
+								lettersPlayerTwo.deleteSpecificNode(tile);
+
+								coordinateX = positionX;
+								coordinateY = positionY;
+							}
+							else
+							{
+								cout << endl
+									 << "\t Coordenada fuera de rango: (" << positionX << ","
+									 << positionY << ") para formar una palbra de D-I o Ar-Ab";
+							}
 						}
 						else
 						{
@@ -469,9 +491,11 @@ void Menu::startGame()
 				cout << endl;
 				break;
 			}
-			letters->report();
-			turn = !turn;
 		}
+		letters->report();
+		turn = !turn;
+		coordinateX = 0;
+		coordinateY = 0;
 	}
 
 	playerOne->getScores()->addLastNode(playerOneScore);
@@ -549,7 +573,6 @@ void Menu::readJSON(string route)
 
 void Menu::assignTurn()
 {
-	srand(time(NULL));
 	if (rand() % 2 == 1)
 	{
 		turn = true;

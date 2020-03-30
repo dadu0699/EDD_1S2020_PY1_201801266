@@ -21,7 +21,6 @@ private:
 	Player *playerOne;
 	Player *playerTwo;
 	bool turn;
-	bool finish;
 
 	void principal();
 	void choosePlayer();
