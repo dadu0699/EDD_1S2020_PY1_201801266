@@ -41,7 +41,7 @@ void Menu::principal()
 		cout << endl
 			 << "\t2. Escoger / Agregar / Reporte Jugadores";
 		cout << endl
-			 << "\t3. Tablero de puntuaci�n";
+			 << "\t3. Tablero de puntuacion";
 		cout << endl
 			 << "\t4. Salir";
 		cout << endl
@@ -107,8 +107,7 @@ void Menu::choosePlayer()
 		case 1:
 			if (!flagPlayerOne)
 			{
-				cout << endl
-					 << "\t >> Jugador 1: ";
+				cout << "\t >> Jugador 1: ";
 				cin >> namePlayerOne;
 				playerOne = players->search(namePlayerOne);
 				if (playerOne == nullptr)
@@ -123,8 +122,7 @@ void Menu::choosePlayer()
 
 			if (!flagPlayerTwo)
 			{
-				cout << endl
-					 << "\t >> Jugador 2: ";
+				cout << "\t >> Jugador 2: ";
 				cin >> namePlayerTwo;
 				playerTwo = players->search(namePlayerTwo);
 				if (playerTwo == nullptr)
@@ -205,6 +203,8 @@ void Menu::startGame()
 	int positionX;
 	int positionY;
 	int postions[25][2];
+	int playerOneScore = 0;
+	int playerTwoScore = 0;
 
 	for (int i = 0; i < 7; i++)
 	{
@@ -259,8 +259,7 @@ void Menu::startGame()
 					cin >> positionY;
 					if (lettersPlayerOne.searchNode(tile) != nullptr)
 					{
-						if (positionX <= boardDimensions && positionX > 0
-							&& positionY <= boardDimensions && positionY > 0)
+						if (positionX <= boardDimensions && positionX > 0 && positionY <= boardDimensions && positionY > 0)
 						{
 							word += tile;
 							postions[word.length() - 1][0] = positionX;
@@ -291,7 +290,17 @@ void Menu::startGame()
 					for (int i = 0; i < word.length(); i++)
 					{
 						cW = word.at(i);
-						board->addNode(postions[i][0], postions[i][1], 1, cW);
+						if (board->getNode(postions[i][0], postions[i][1]) != nullptr)
+						{
+							board->getNode(postions[i][0], postions[i][1])->setData(cW);
+							playerOneScore += board->getNode(postions[i][0], postions[i][1])->getScore();
+						}
+						else
+						{
+							board->addNode(postions[i][0], postions[i][1], 1, cW);
+							playerOneScore++;
+						}
+						lettersPlayerOne.addLastNode(letters->pop()->getLetter());
 					}
 					board->report();
 				}
@@ -311,7 +320,7 @@ void Menu::startGame()
 				do
 				{
 					cout << endl
-						<< "\t >> ficha: ";
+						 << "\t >> ficha: ";
 					cin >> tile;
 					if (lettersPlayerOne.searchNode(tile) != nullptr)
 					{
@@ -322,15 +331,16 @@ void Menu::startGame()
 					else
 					{
 						cout << endl
-							<< "\t Ficha no encontrada: " << tile;
+							 << "\t Ficha no encontrada: " << tile;
 					}
 
 					cout << endl
-						<< "\t >> Desea continuar (s/n): ";
+						 << "\t >> Desea continuar (s/n): ";
 					cin >> tile;
 				} while (tile == 's');
 				lettersPlayerOne.report();
-				cout<< endl << "\t";
+				cout << endl
+					 << "\t";
 				system("pause");
 				break;
 			case 3:
@@ -353,18 +363,17 @@ void Menu::startGame()
 				do
 				{
 					cout << endl
-						<< "\t >> ficha: ";
+						 << "\t >> ficha: ";
 					cin >> tile;
 					cout << endl
-						<< "\t >> Posicion x: ";
+						 << "\t >> Posicion x: ";
 					cin >> positionX;
 					cout << endl
-						<< "\t >> Posicion y: ";
+						 << "\t >> Posicion y: ";
 					cin >> positionY;
 					if (lettersPlayerTwo.searchNode(tile) != nullptr)
 					{
-						if (positionX <= boardDimensions && positionX > 0
-							&& positionY <= boardDimensions && positionY > 0)
+						if (positionX <= boardDimensions && positionX > 0 && positionY <= boardDimensions && positionY > 0)
 						{
 							word += tile;
 							postions[word.length() - 1][0] = positionX;
@@ -376,17 +385,17 @@ void Menu::startGame()
 						else
 						{
 							cout << endl
-								<< "\t Coordenada fuera de rango: (" << positionX << "," << positionY << ")";
+								 << "\t Coordenada fuera de rango: (" << positionX << "," << positionY << ")";
 						}
 					}
 					else
 					{
 						cout << endl
-							<< "\t Ficha no encontrada: " << tile;
+							 << "\t Ficha no encontrada: " << tile;
 					}
 
 					cout << endl
-						<< "\t >> Desea continuar (s/n): ";
+						 << "\t >> Desea continuar (s/n): ";
 					cin >> tile;
 				} while (tile == 's');
 
@@ -395,14 +404,24 @@ void Menu::startGame()
 					for (int i = 0; i < word.length(); i++)
 					{
 						cW = word.at(i);
-						board->addNode(postions[i][0], postions[i][1], 1, cW);
+						if (board->getNode(postions[i][0], postions[i][1]) != nullptr)
+						{
+							board->getNode(postions[i][0], postions[i][1])->setData(cW);
+							playerTwoScore += board->getNode(postions[i][0], postions[i][1])->getScore();
+						}
+						else
+						{
+							board->addNode(postions[i][0], postions[i][1], 1, cW);
+							playerTwoScore++;
+						}
+						lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
 					}
 					board->report();
 				}
 				else
 				{
 					cout << endl
-						<< "\t Palabra no encontrada: " << word;
+						 << "\t Palabra no encontrada: " << word;
 
 					while (!auxLetters.isEmpty())
 					{
@@ -415,7 +434,7 @@ void Menu::startGame()
 				do
 				{
 					cout << endl
-						<< "\t >> ficha: ";
+						 << "\t >> ficha: ";
 					cin >> tile;
 					if (lettersPlayerTwo.searchNode(tile) != nullptr)
 					{
@@ -426,15 +445,16 @@ void Menu::startGame()
 					else
 					{
 						cout << endl
-							<< "\t Ficha no encontrada: " << tile;
+							 << "\t Ficha no encontrada: " << tile;
 					}
 
 					cout << endl
-						<< "\t >> Desea continuar (s/n): ";
+						 << "\t >> Desea continuar (s/n): ";
 					cin >> tile;
 				} while (tile == 's');
 				lettersPlayerTwo.report();
-				cout << endl << "\t";
+				cout << endl
+					 << "\t";
 				system("pause");
 				break;
 			case 3:
@@ -442,13 +462,35 @@ void Menu::startGame()
 				break;
 			default:
 				cout << endl
-					<< "\tOPCION INCORRECTA";
+					 << "\tOPCION INCORRECTA";
 				cout << endl;
 				break;
 			}
 			turn = !turn;
 		}
 	}
+
+	playerOne->getScores()->addLastNode(playerOneScore);
+	playerTwo->getScores()->addLastNode(playerTwoScore);
+
+	if (playerOneScore > playerTwoScore)
+	{
+		cout << endl
+			 << "\t >> Ganador: " << playerOne->getName();
+	}
+	else if (playerOneScore < playerTwoScore)
+	{
+		cout << endl
+			 << "\t >> Ganador: " << playerTwo->getName();
+	}
+	else
+	{
+		cout << endl
+			 << "\t >> Empate";
+	}
+	cout << endl
+		 << "\t";
+	system("pause");
 }
 
 void Menu::readJSON(string route)

@@ -409,3 +409,32 @@ void SparseMatrix::report()
         cout << "Unable to open file";
     }
 }
+
+SparseMatrixNode *SparseMatrix::getNode(int x, int y)
+{
+    SparseMatrixNode *columnNode = searchColumn(x);
+    SparseMatrixNode *rowNode = searchRow(y);
+
+    if (columnNode != nullptr && rowNode != nullptr)
+    {
+        SparseMatrixNode *auxiliaryNode = root;
+        while (auxiliaryNode != nullptr)
+        {
+            if (auxiliaryNode->getY() == y)
+            {
+                break;
+            }
+            auxiliaryNode = auxiliaryNode->getDownNode();
+        }
+
+        while (auxiliaryNode != nullptr)
+        {
+            if (auxiliaryNode->getX() == x)
+            {
+                return auxiliaryNode;
+            }
+            auxiliaryNode = auxiliaryNode->getNextNode();
+        }
+    }
+    return nullptr;
+}

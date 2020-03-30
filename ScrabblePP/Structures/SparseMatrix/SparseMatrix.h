@@ -40,6 +40,8 @@ public:
     void printColumns();
 
     void report();
+
+    SparseMatrixNode *getNode(int x, int y);
 };
 
 #endif //SCRABBLE___SPARSEMATRIX_H

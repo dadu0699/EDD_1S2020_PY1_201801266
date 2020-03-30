@@ -14,11 +14,12 @@ DoubleList::~DoubleList()
 {
 }
 
-DoubleNode* DoubleList::getFirstNode() const
+DoubleNode *DoubleList::getFirstNode() const
 {
     return firstNode;
 }
-DoubleNode* DoubleList::getLastNode() const
+
+DoubleNode *DoubleList::getLastNode() const
 {
     return lastNode;
 }

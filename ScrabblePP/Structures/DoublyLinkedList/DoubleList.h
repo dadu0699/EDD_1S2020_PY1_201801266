@@ -13,8 +13,8 @@ public:
     DoubleList();
     ~DoubleList();
 
-    DoubleNode* getFirstNode() const;
-    DoubleNode* getLastNode() const;
+    DoubleNode *getFirstNode() const;
+    DoubleNode *getLastNode() const;
 
     void addFirstNode(Letter *letter);
     void addLastNode(Letter *letter);
