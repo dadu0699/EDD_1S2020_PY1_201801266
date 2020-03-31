@@ -205,22 +205,33 @@ void Menu::startGame()
 	board = new SparseMatrix();
 	dictionary = new CircularDoubleList();
 	letters = new Queue();
-	readJSON("properties.json");
 	DoubleList lettersPlayerOne;
 	DoubleList lettersPlayerTwo;
 	DoubleList auxLetters;
 	int option;
 	char tile;
-	string word = "";
+	string word;
 	string cW;
 	int positionX;
 	int positionY;
 	int postions[25][2];
-	int playerOneScore = 0;
-	int playerTwoScore = 0;
-	int coordinateX = boardDimensions / 2;
-	int coordinateY = boardDimensions / 2;
-	bool finish = false;
+	int playerOneScore;
+	int playerTwoScore;
+	int coordinateX;
+	int coordinateY;
+	bool finish;
+
+
+	cout << endl << "\tArchivo JSON: ";
+	cin >> word;
+	readJSON(word);
+
+	word = "";
+	playerOneScore = 0;
+	playerTwoScore = 0;
+	coordinateX = boardDimensions / 2;
+	coordinateY = boardDimensions / 2;
+	finish = false;
 
 	for (int i = 0; i < 7; i++)
 	{
