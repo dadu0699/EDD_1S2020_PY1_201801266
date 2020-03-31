@@ -204,7 +204,6 @@ void Menu::startGame()
 	system("CLS");
 	board = new SparseMatrix();
 	dictionary = new CircularDoubleList();
-	letters = new Queue();
 	DoubleList lettersPlayerOne;
 	DoubleList lettersPlayerTwo;
 	DoubleList auxLetters;
@@ -232,6 +231,7 @@ void Menu::startGame()
 	coordinateX = boardDimensions / 2;
 	coordinateY = boardDimensions / 2;
 	finish = false;
+	letters = new Queue();
 
 	for (int i = 0; i < 7; i++)
 	{
