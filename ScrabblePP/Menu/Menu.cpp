@@ -267,11 +267,9 @@ void Menu::startGame()
 					cout << endl
 						 << "\t >> ficha: ";
 					cin >> tile;
-					cout << endl
-						 << "\t >> Posicion x: ";
+					cout << "\t >> Posicion x: ";
 					cin >> positionX;
-					cout << endl
-						 << "\t >> Posicion y: ";
+					cout << "\t >> Posicion y: ";
 					cin >> positionY;
 					if (lettersPlayerOne.searchNode(tile) != nullptr)
 					{
@@ -291,21 +289,18 @@ void Menu::startGame()
 							}
 							else
 							{
-								cout << endl
-									 << "\t Coordenada fuera de rango: (" << positionX << ","
+								cout << "\t Coordenada fuera de rango: (" << positionX << ","
 									 << positionY << ") para formar una palbra de D-I o Ar-Ab";
 							}
 						}
 						else
 						{
-							cout << endl
-								 << "\t Coordenada fuera de rango: (" << positionX << "," << positionY << ")";
+							cout << "\t Coordenada fuera de rango: (" << positionX << "," << positionY << ")";
 						}
 					}
 					else
 					{
-						cout << endl
-							 << "\t Ficha no encontrada: " << tile;
+						cout << "\t Ficha no encontrada: " << tile;
 					}
 
 					cout << endl
@@ -329,7 +324,15 @@ void Menu::startGame()
 							playerOneScore += auxLetters.getFirstNode()->getLetter()->getScore();
 						}
 						auxLetters.deleteFirstNode();
+
+						lettersPlayerOne.readStartNodes();
+						lettersPlayerOne.readEndNodes();
+
 						lettersPlayerOne.addLastNode(letters->pop()->getLetter());
+
+
+						lettersPlayerOne.readStartNodes();
+						lettersPlayerOne.readEndNodes();
 					}
 					board->report();
 				}
@@ -341,7 +344,14 @@ void Menu::startGame()
 					while (!auxLetters.isEmpty())
 					{
 						lettersPlayerOne.addLastNode(auxLetters.getLastNode()->getLetter());
+
+						lettersPlayerOne.readStartNodes();
+						lettersPlayerOne.readEndNodes();
+
 						auxLetters.deleteLastNode();
+
+						lettersPlayerOne.readStartNodes();
+						lettersPlayerOne.readEndNodes();
 					}
 				}
 				break;
@@ -354,13 +364,26 @@ void Menu::startGame()
 					if (lettersPlayerOne.searchNode(tile) != nullptr)
 					{
 						letters->push(lettersPlayerOne.searchNode(tile)->getLetter());
+
+
+						lettersPlayerOne.readStartNodes();
+						lettersPlayerOne.readEndNodes();
+
 						lettersPlayerOne.deleteSpecificNode(tile);
+
+
+						lettersPlayerOne.readStartNodes();
+						lettersPlayerOne.readEndNodes();
+
 						lettersPlayerOne.addLastNode(letters->pop()->getLetter());
+
+
+						lettersPlayerOne.readStartNodes();
+						lettersPlayerOne.readEndNodes();
 					}
 					else
 					{
-						cout << endl
-							 << "\t Ficha no encontrada: " << tile;
+						cout << "\t Ficha no encontrada: " << tile;
 					}
 
 					cout << endl
@@ -393,11 +416,9 @@ void Menu::startGame()
 					cout << endl
 						 << "\t >> ficha: ";
 					cin >> tile;
-					cout << endl
-						 << "\t >> Posicion x: ";
+					cout << "\t >> Posicion x: ";
 					cin >> positionX;
-					cout << endl
-						 << "\t >> Posicion y: ";
+					cout << "\t >> Posicion y: ";
 					cin >> positionY;
 					if (lettersPlayerTwo.searchNode(tile) != nullptr)
 					{
@@ -417,21 +438,18 @@ void Menu::startGame()
 							}
 							else
 							{
-								cout << endl
-									 << "\t Coordenada fuera de rango: (" << positionX << ","
+								cout << "\t Coordenada fuera de rango: (" << positionX << ","
 									 << positionY << ") para formar una palbra de D-I o Ar-Ab";
 							}
 						}
 						else
 						{
-							cout << endl
-								 << "\t Coordenada fuera de rango: (" << positionX << "," << positionY << ")";
+							cout << "\t Coordenada fuera de rango: (" << positionX << "," << positionY << ")";
 						}
 					}
 					else
 					{
-						cout << endl
-							 << "\t Ficha no encontrada: " << tile;
+						cout << "\t Ficha no encontrada: " << tile;
 					}
 
 					cout << endl
@@ -455,7 +473,15 @@ void Menu::startGame()
 							playerTwoScore += auxLetters.getFirstNode()->getLetter()->getScore();
 						}
 						auxLetters.deleteFirstNode();
+
+						lettersPlayerTwo.readStartNodes();
+						lettersPlayerTwo.readEndNodes();
+
 						lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
+
+
+						lettersPlayerTwo.readStartNodes();
+						lettersPlayerTwo.readEndNodes();
 					}
 					board->report();
 				}
@@ -466,8 +492,19 @@ void Menu::startGame()
 
 					while (!auxLetters.isEmpty())
 					{
+						lettersPlayerTwo.readStartNodes();
+						lettersPlayerTwo.readEndNodes();
+
 						lettersPlayerTwo.addLastNode(auxLetters.getLastNode()->getLetter());
+
+						lettersPlayerTwo.readStartNodes();
+						lettersPlayerTwo.readEndNodes();
+
 						auxLetters.deleteLastNode();
+
+
+						lettersPlayerTwo.readStartNodes();
+						lettersPlayerTwo.readEndNodes();
 					}
 				}
 				break;
@@ -480,8 +517,20 @@ void Menu::startGame()
 					if (lettersPlayerTwo.searchNode(tile) != nullptr)
 					{
 						letters->push(lettersPlayerTwo.searchNode(tile)->getLetter());
+
+						lettersPlayerTwo.readStartNodes();
+						lettersPlayerTwo.readEndNodes();
+
 						lettersPlayerTwo.deleteSpecificNode(tile);
+
+						lettersPlayerTwo.readStartNodes();
+						lettersPlayerTwo.readEndNodes();
+
 						lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
+
+
+						lettersPlayerTwo.readStartNodes();
+						lettersPlayerTwo.readEndNodes();
 					}
 					else
 					{

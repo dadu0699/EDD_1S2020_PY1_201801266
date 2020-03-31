@@ -24,6 +24,9 @@ public:
     DoubleNode *searchNode(char letter);
     bool isEmpty();
     void report();
+
+    void readStartNodes();
+    void readEndNodes();
 };
 
 #endif //SCRABBLE___DOUBLELIST_H

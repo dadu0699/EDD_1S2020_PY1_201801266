@@ -63,7 +63,7 @@ void DoubleList::deleteFirstNode()
 {
     if (!isEmpty())
     {
-        if (firstNode->getNextNode() == nullptr)
+        if (firstNode == lastNode)
         {
             firstNode = nullptr;
             lastNode = nullptr;
@@ -71,7 +71,6 @@ void DoubleList::deleteFirstNode()
         else
         {
             firstNode = firstNode->getNextNode();
-            delete (firstNode->getPreviousNode());
             firstNode->setPreviousNode(nullptr);
         }
     }
@@ -81,7 +80,7 @@ void DoubleList::deleteLastNode()
 {
     if (!isEmpty())
     {
-        if (firstNode->getNextNode() == nullptr)
+        if (firstNode == lastNode)
         {
             firstNode = nullptr;
             lastNode = nullptr;
@@ -89,7 +88,6 @@ void DoubleList::deleteLastNode()
         else
         {
             lastNode = lastNode->getPreviousNode();
-            delete (lastNode->getNextNode());
             lastNode->setNextNode(nullptr);
         }
     }
@@ -99,29 +97,21 @@ void DoubleList::deleteSpecificNode(char letter)
 {
     if (!isEmpty())
     {
-        if (firstNode == lastNode && letter == firstNode->getLetter()->getCharacter())
+        DoubleNode* auxiliaryNode = searchNode(letter);
+        if (firstNode == auxiliaryNode)
         {
-            firstNode = nullptr;
-            lastNode = nullptr;
+            deleteFirstNode();
         }
-        else if (letter == firstNode->getLetter()->getCharacter())
+        else if (lastNode == auxiliaryNode)
         {
-            firstNode = firstNode->getNextNode();
-            firstNode->setPreviousNode(nullptr);
+            deleteLastNode();
         }
         else
         {
-            DoubleNode *auxiliaryNode = searchNode(letter);
-            if (auxiliaryNode != nullptr)
-            {
-                DoubleNode *previousNode = auxiliaryNode->getPreviousNode();
-                DoubleNode *nextNode = auxiliaryNode->getNextNode();
-                previousNode->setNextNode(auxiliaryNode->getNextNode());
-                if (nextNode != nullptr)
-                {
-                    nextNode->setPreviousNode(auxiliaryNode->getPreviousNode());
-                }
-            }
+            DoubleNode* previousNode = auxiliaryNode->getPreviousNode();
+            DoubleNode* nextNode = auxiliaryNode->getNextNode();
+            previousNode->setNextNode(nextNode);
+            nextNode->setPreviousNode(previousNode);
         }
     }
 }
@@ -173,4 +163,26 @@ void DoubleList::report()
             cout << "Unable to open file";
         }
     }
+}
+
+void DoubleList::readStartNodes()
+{
+    DoubleNode *auxiliaryNode = firstNode;
+    while (auxiliaryNode != NULL)
+    {
+        cout << auxiliaryNode->getLetter()->getCharacter() << " <-> ";
+        auxiliaryNode = auxiliaryNode->getNextNode();
+    }
+    cout << endl;
+}
+
+void DoubleList::readEndNodes()
+{
+    DoubleNode *auxiliaryNode = lastNode;
+    while (auxiliaryNode != NULL)
+    {
+        cout << auxiliaryNode->getLetter()->getCharacter() << " <-> ";
+        auxiliaryNode = auxiliaryNode->getPreviousNode();
+    }
+    cout << endl;
 }
