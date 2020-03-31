@@ -324,15 +324,7 @@ void Menu::startGame()
 							playerOneScore += auxLetters.getFirstNode()->getLetter()->getScore();
 						}
 						auxLetters.deleteFirstNode();
-
-						lettersPlayerOne.readStartNodes();
-						lettersPlayerOne.readEndNodes();
-
 						lettersPlayerOne.addLastNode(letters->pop()->getLetter());
-
-
-						lettersPlayerOne.readStartNodes();
-						lettersPlayerOne.readEndNodes();
 					}
 					board->report();
 				}
@@ -344,14 +336,7 @@ void Menu::startGame()
 					while (!auxLetters.isEmpty())
 					{
 						lettersPlayerOne.addLastNode(auxLetters.getLastNode()->getLetter());
-
-						lettersPlayerOne.readStartNodes();
-						lettersPlayerOne.readEndNodes();
-
 						auxLetters.deleteLastNode();
-
-						lettersPlayerOne.readStartNodes();
-						lettersPlayerOne.readEndNodes();
 					}
 				}
 				break;
@@ -364,22 +349,8 @@ void Menu::startGame()
 					if (lettersPlayerOne.searchNode(tile) != nullptr)
 					{
 						letters->push(lettersPlayerOne.searchNode(tile)->getLetter());
-
-
-						lettersPlayerOne.readStartNodes();
-						lettersPlayerOne.readEndNodes();
-
 						lettersPlayerOne.deleteSpecificNode(tile);
-
-
-						lettersPlayerOne.readStartNodes();
-						lettersPlayerOne.readEndNodes();
-
 						lettersPlayerOne.addLastNode(letters->pop()->getLetter());
-
-
-						lettersPlayerOne.readStartNodes();
-						lettersPlayerOne.readEndNodes();
 					}
 					else
 					{
@@ -473,15 +444,7 @@ void Menu::startGame()
 							playerTwoScore += auxLetters.getFirstNode()->getLetter()->getScore();
 						}
 						auxLetters.deleteFirstNode();
-
-						lettersPlayerTwo.readStartNodes();
-						lettersPlayerTwo.readEndNodes();
-
-						lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
-
-
-						lettersPlayerTwo.readStartNodes();
-						lettersPlayerTwo.readEndNodes();
+						lettersPlayerTwo.addLastNode(letters->pop()->getLetter());;
 					}
 					board->report();
 				}
@@ -492,19 +455,8 @@ void Menu::startGame()
 
 					while (!auxLetters.isEmpty())
 					{
-						lettersPlayerTwo.readStartNodes();
-						lettersPlayerTwo.readEndNodes();
-
 						lettersPlayerTwo.addLastNode(auxLetters.getLastNode()->getLetter());
-
-						lettersPlayerTwo.readStartNodes();
-						lettersPlayerTwo.readEndNodes();
-
 						auxLetters.deleteLastNode();
-
-
-						lettersPlayerTwo.readStartNodes();
-						lettersPlayerTwo.readEndNodes();
 					}
 				}
 				break;
@@ -517,20 +469,8 @@ void Menu::startGame()
 					if (lettersPlayerTwo.searchNode(tile) != nullptr)
 					{
 						letters->push(lettersPlayerTwo.searchNode(tile)->getLetter());
-
-						lettersPlayerTwo.readStartNodes();
-						lettersPlayerTwo.readEndNodes();
-
 						lettersPlayerTwo.deleteSpecificNode(tile);
-
-						lettersPlayerTwo.readStartNodes();
-						lettersPlayerTwo.readEndNodes();
-
 						lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
-
-
-						lettersPlayerTwo.readStartNodes();
-						lettersPlayerTwo.readEndNodes();
 					}
 					else
 					{
