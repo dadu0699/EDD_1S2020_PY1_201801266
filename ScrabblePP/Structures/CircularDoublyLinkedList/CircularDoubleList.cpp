@@ -111,9 +111,16 @@ void CircularDoubleList::deleteSpecificNode(string word)
 CircularDoubleNode *CircularDoubleList::searchNode(string word)
 {
 	CircularDoubleNode *auxiliaryNode = firstNode;
+	string auxWord;
 	do
 	{
-		if (word.compare(auxiliaryNode->getWord()))
+		auxWord = auxiliaryNode->getWord();
+		for (int i = 0; i < auxWord.length(); i++)
+		{
+			auxWord[i] = towupper(auxWord[i]);
+		}
+
+		if (word == auxWord)
 		{
 			return auxiliaryNode;
 		}

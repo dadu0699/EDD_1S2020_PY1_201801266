@@ -220,8 +220,8 @@ void Menu::startGame()
 	int coordinateY;
 	bool finish;
 
-
-	cout << endl << "\tArchivo JSON: ";
+	cout << endl
+		 << "\tArchivo JSON: ";
 	cin >> word;
 	readJSON(word);
 
@@ -282,36 +282,48 @@ void Menu::startGame()
 					cin >> positionX;
 					cout << "\t >> Posicion y: ";
 					cin >> positionY;
-					if (lettersPlayerOne.searchNode(tile) != nullptr)
+
+					if (positionX <= boardDimensions && positionX > 0 && positionY <= boardDimensions && positionY > 0)
 					{
-						if (positionX <= boardDimensions && positionX > 0 && positionY <= boardDimensions && positionY > 0)
+						if (positionX >= coordinateX && positionY >= coordinateY)
 						{
-							if (positionX >= coordinateX && positionY >= coordinateY)
+							word += tile;
+							postions[word.length() - 1][0] = positionX;
+							postions[word.length() - 1][1] = positionY;
+
+							if (board->getNode(positionX, positionY) != nullptr)
 							{
-								word += tile;
-								postions[word.length() - 1][0] = positionX;
-								postions[word.length() - 1][1] = positionY;
-
-								auxLetters.addLastNode(lettersPlayerOne.searchNode(tile)->getLetter());
-								lettersPlayerOne.deleteSpecificNode(tile);
-
-								coordinateX = positionX;
-								coordinateY = positionY;
+								if (board->getNode(positionX, positionY)->getData()[0] == tile)
+								{
+									cout << "\t Se reutilizara la letra ya colocada en el tablero : "
+										 << tile;
+								}
 							}
 							else
 							{
-								cout << "\t Coordenada fuera de rango: (" << positionX << ","
-									 << positionY << ") para formar una palbra de D-I o Ar-Ab";
+								if (lettersPlayerOne.searchNode(tile) != nullptr)
+								{
+									auxLetters.addLastNode(lettersPlayerOne.searchNode(tile)->getLetter());
+									lettersPlayerOne.deleteSpecificNode(tile);
+								}
+								else
+								{
+									word = word.substr(0, word.length() - 1);
+									cout << "\t Ficha no encontrada: " << tile;
+								}
 							}
+							coordinateX = positionX;
+							coordinateY = positionY;
 						}
 						else
 						{
-							cout << "\t Coordenada fuera de rango: (" << positionX << "," << positionY << ")";
+							cout << "\t Coordenada fuera de rango: (" << positionX << ","
+								 << positionY << ") para formar una palbra de D-I o Ar-Ab";
 						}
 					}
 					else
 					{
-						cout << "\t Ficha no encontrada: " << tile;
+						cout << "\t Coordenada fuera de rango: (" << positionX << "," << positionY << ")";
 					}
 
 					cout << endl
@@ -326,8 +338,11 @@ void Menu::startGame()
 						cW = word.at(i);
 						if (board->getNode(postions[i][0], postions[i][1]) != nullptr)
 						{
-							board->getNode(postions[i][0], postions[i][1])->setData(cW);
-							playerOneScore += board->getNode(postions[i][0], postions[i][1])->getScore() * auxLetters.getFirstNode()->getLetter()->getScore();
+							if (board->getNode(postions[i][0], postions[i][1])->getData() == "")
+							{
+								board->getNode(postions[i][0], postions[i][1])->setData(cW);
+								playerOneScore += board->getNode(postions[i][0], postions[i][1])->getScore() * auxLetters.getFirstNode()->getLetter()->getScore();
+							}
 						}
 						else
 						{
@@ -402,36 +417,48 @@ void Menu::startGame()
 					cin >> positionX;
 					cout << "\t >> Posicion y: ";
 					cin >> positionY;
-					if (lettersPlayerTwo.searchNode(tile) != nullptr)
+
+					if (positionX <= boardDimensions && positionX > 0 && positionY <= boardDimensions && positionY > 0)
 					{
-						if (positionX <= boardDimensions && positionX > 0 && positionY <= boardDimensions && positionY > 0)
+						if (positionX >= coordinateX && positionY >= coordinateY)
 						{
-							if (positionX >= coordinateX && positionY >= coordinateY)
+							word += tile;
+							postions[word.length() - 1][0] = positionX;
+							postions[word.length() - 1][1] = positionY;
+
+							if (board->getNode(positionX, positionY) != nullptr)
 							{
-								word += tile;
-								postions[word.length() - 1][0] = positionX;
-								postions[word.length() - 1][1] = positionY;
-
-								auxLetters.addLastNode(lettersPlayerTwo.searchNode(tile)->getLetter());
-								lettersPlayerTwo.deleteSpecificNode(tile);
-
-								coordinateX = positionX;
-								coordinateY = positionY;
+								if (board->getNode(positionX, positionY)->getData()[0] == tile)
+								{
+									cout << "\t Se reutilizara la letra ya colocada en el tablero : "
+										 << tile;
+								}
 							}
 							else
 							{
-								cout << "\t Coordenada fuera de rango: (" << positionX << ","
-									 << positionY << ") para formar una palbra de D-I o Ar-Ab";
+								if (lettersPlayerTwo.searchNode(tile) != nullptr)
+								{
+									auxLetters.addLastNode(lettersPlayerTwo.searchNode(tile)->getLetter());
+									lettersPlayerTwo.deleteSpecificNode(tile);
+								}
+								else
+								{
+									word = word.substr(0, word.length() - 1);
+									cout << "\t Ficha no encontrada: " << tile;
+								}
 							}
+							coordinateX = positionX;
+							coordinateY = positionY;
 						}
 						else
 						{
-							cout << "\t Coordenada fuera de rango: (" << positionX << "," << positionY << ")";
+							cout << "\t Coordenada fuera de rango: (" << positionX << ","
+								 << positionY << ") para formar una palbra de D-I o Ar-Ab";
 						}
 					}
 					else
 					{
-						cout << "\t Ficha no encontrada: " << tile;
+						cout << "\t Coordenada fuera de rango: (" << positionX << "," << positionY << ")";
 					}
 
 					cout << endl
@@ -455,7 +482,8 @@ void Menu::startGame()
 							playerTwoScore += auxLetters.getFirstNode()->getLetter()->getScore();
 						}
 						auxLetters.deleteFirstNode();
-						lettersPlayerTwo.addLastNode(letters->pop()->getLetter());;
+						lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
+						;
 					}
 					board->report();
 				}
