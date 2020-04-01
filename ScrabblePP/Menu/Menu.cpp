@@ -473,8 +473,11 @@ void Menu::startGame()
 						cW = word.at(i);
 						if (board->getNode(postions[i][0], postions[i][1]) != nullptr)
 						{
-							board->getNode(postions[i][0], postions[i][1])->setData(cW);
-							playerTwoScore += board->getNode(postions[i][0], postions[i][1])->getScore() * auxLetters.getFirstNode()->getLetter()->getScore();
+							if (board->getNode(postions[i][0], postions[i][1])->getData() == "")
+							{
+								board->getNode(postions[i][0], postions[i][1])->setData(cW);
+								playerOneScore += board->getNode(postions[i][0], postions[i][1])->getScore() * auxLetters.getFirstNode()->getLetter()->getScore();
+							}
 						}
 						else
 						{
@@ -483,7 +486,6 @@ void Menu::startGame()
 						}
 						auxLetters.deleteFirstNode();
 						lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
-						;
 					}
 					board->report();
 				}
