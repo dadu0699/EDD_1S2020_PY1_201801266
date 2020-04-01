@@ -297,6 +297,8 @@ void Menu::startGame()
 								{
 									cout << "\t Se reutilizara la letra ya colocada en el tablero : "
 										 << tile;
+									coordinateX = positionX;
+									coordinateY = positionY;
 								}
 							}
 							else
@@ -305,6 +307,8 @@ void Menu::startGame()
 								{
 									auxLetters.addLastNode(lettersPlayerOne.searchNode(tile)->getLetter());
 									lettersPlayerOne.deleteSpecificNode(tile);
+									coordinateX = positionX;
+									coordinateY = positionY;
 								}
 								else
 								{
@@ -312,8 +316,6 @@ void Menu::startGame()
 									cout << "\t Ficha no encontrada: " << tile;
 								}
 							}
-							coordinateX = positionX;
-							coordinateY = positionY;
 						}
 						else
 						{
@@ -432,6 +434,8 @@ void Menu::startGame()
 								{
 									cout << "\t Se reutilizara la letra ya colocada en el tablero : "
 										 << tile;
+									coordinateX = positionX;
+									coordinateY = positionY;
 								}
 							}
 							else
@@ -440,6 +444,8 @@ void Menu::startGame()
 								{
 									auxLetters.addLastNode(lettersPlayerTwo.searchNode(tile)->getLetter());
 									lettersPlayerTwo.deleteSpecificNode(tile);
+									coordinateX = positionX;
+									coordinateY = positionY;
 								}
 								else
 								{
@@ -447,8 +453,6 @@ void Menu::startGame()
 									cout << "\t Ficha no encontrada: " << tile;
 								}
 							}
-							coordinateX = positionX;
-							coordinateY = positionY;
 						}
 						else
 						{
