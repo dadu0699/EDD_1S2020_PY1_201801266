@@ -48,7 +48,16 @@ void Menu::principal()
 		case 1:
 			if (playerOne != nullptr && playerTwo != nullptr)
 			{
-				startGame();
+				string word;
+				cout << endl
+					 << "\tArchivo JSON: ";
+				cin >> word;
+				readJSON(word);
+
+				if (board != nullptr && dictionary != nullptr)
+				{
+					startGame();
+				}
 			}
 			break;
 		case 2:
@@ -202,8 +211,6 @@ void Menu::choosePlayer()
 void Menu::startGame()
 {
 	system("CLS");
-	board = new SparseMatrix();
-	dictionary = new CircularDoubleList();
 	DoubleList lettersPlayerOne;
 	DoubleList lettersPlayerTwo;
 	DoubleList auxLetters;
@@ -219,11 +226,6 @@ void Menu::startGame()
 	int coordinateX;
 	int coordinateY;
 	bool finish;
-
-	cout << endl
-		 << "\tArchivo JSON: ";
-	cin >> word;
-	readJSON(word);
 
 	word = "";
 	playerOneScore = 0;
@@ -287,9 +289,6 @@ void Menu::startGame()
 					{
 						if (positionX >= coordinateX && positionY >= coordinateY)
 						{
-							word += tile;
-							postions[word.length() - 1][0] = positionX;
-							postions[word.length() - 1][1] = positionY;
 
 							if (board->getNode(positionX, positionY) != nullptr)
 							{
@@ -297,8 +296,16 @@ void Menu::startGame()
 								{
 									cout << "\t Se reutilizara la letra ya colocada en el tablero : "
 										 << tile;
+
+									word += tile;
+									postions[word.length() - 1][0] = positionX;
+									postions[word.length() - 1][1] = positionY;
 									coordinateX = positionX;
 									coordinateY = positionY;
+								}
+								else
+								{
+									cout << "\t No se puede remplazar la letra";
 								}
 							}
 							else
@@ -307,12 +314,15 @@ void Menu::startGame()
 								{
 									auxLetters.addLastNode(lettersPlayerOne.searchNode(tile)->getLetter());
 									lettersPlayerOne.deleteSpecificNode(tile);
+
+									word += tile;
+									postions[word.length() - 1][0] = positionX;
+									postions[word.length() - 1][1] = positionY;
 									coordinateX = positionX;
 									coordinateY = positionY;
 								}
 								else
 								{
-									word = word.substr(0, word.length() - 1);
 									cout << "\t Ficha no encontrada: " << tile;
 								}
 							}
@@ -351,8 +361,11 @@ void Menu::startGame()
 							board->addNode(postions[i][0], postions[i][1], 1, cW);
 							playerOneScore += auxLetters.getFirstNode()->getLetter()->getScore();
 						}
+						if (!auxLetters.isEmpty())
+						{
+							lettersPlayerOne.addLastNode(letters->pop()->getLetter());
+						}
 						auxLetters.deleteFirstNode();
-						lettersPlayerOne.addLastNode(letters->pop()->getLetter());
 					}
 					board->report();
 				}
@@ -424,9 +437,6 @@ void Menu::startGame()
 					{
 						if (positionX >= coordinateX && positionY >= coordinateY)
 						{
-							word += tile;
-							postions[word.length() - 1][0] = positionX;
-							postions[word.length() - 1][1] = positionY;
 
 							if (board->getNode(positionX, positionY) != nullptr)
 							{
@@ -434,8 +444,16 @@ void Menu::startGame()
 								{
 									cout << "\t Se reutilizara la letra ya colocada en el tablero : "
 										 << tile;
+
+									word += tile;
+									postions[word.length() - 1][0] = positionX;
+									postions[word.length() - 1][1] = positionY;
 									coordinateX = positionX;
 									coordinateY = positionY;
+								}
+								else
+								{
+									cout << "\t No se puede remplazar la letra";
 								}
 							}
 							else
@@ -444,12 +462,15 @@ void Menu::startGame()
 								{
 									auxLetters.addLastNode(lettersPlayerTwo.searchNode(tile)->getLetter());
 									lettersPlayerTwo.deleteSpecificNode(tile);
+
+									word += tile;
+									postions[word.length() - 1][0] = positionX;
+									postions[word.length() - 1][1] = positionY;
 									coordinateX = positionX;
 									coordinateY = positionY;
 								}
 								else
 								{
-									word = word.substr(0, word.length() - 1);
 									cout << "\t Ficha no encontrada: " << tile;
 								}
 							}
@@ -488,8 +509,11 @@ void Menu::startGame()
 							board->addNode(postions[i][0], postions[i][1], 1, cW);
 							playerTwoScore += auxLetters.getFirstNode()->getLetter()->getScore();
 						}
+						if (!auxLetters.isEmpty())
+						{
+							lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
+						}
 						auxLetters.deleteFirstNode();
-						lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
 					}
 					board->report();
 				}
@@ -584,6 +608,9 @@ void Menu::readJSON(string route)
 	ifstream jsonFile(route);
 	if (jsonFile.is_open())
 	{
+		board = new SparseMatrix();
+		dictionary = new CircularDoubleList();
+
 		json jsonData;
 		jsonFile >> jsonData;
 
