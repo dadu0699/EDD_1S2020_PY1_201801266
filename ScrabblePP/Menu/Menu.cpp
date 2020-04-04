@@ -303,6 +303,24 @@ void Menu::startGame()
 									coordinateX = positionX;
 									coordinateY = positionY;
 								}
+								else if (board->getNode(positionX, positionY)->getData() == "")
+								{
+									if (lettersPlayerOne.searchNode(tile) != nullptr)
+									{
+										auxLetters.addLastNode(lettersPlayerOne.searchNode(tile)->getLetter());
+										lettersPlayerOne.deleteSpecificNode(tile);
+
+										word += tile;
+										postions[word.length() - 1][0] = positionX;
+										postions[word.length() - 1][1] = positionY;
+										coordinateX = positionX;
+										coordinateY = positionY;
+									}
+									else
+									{
+										cout << "\t Ficha no encontrada: " << tile;
+									}
+								}
 								else
 								{
 									cout << "\t No se puede remplazar la letra";
@@ -449,6 +467,24 @@ void Menu::startGame()
 									coordinateX = positionX;
 									coordinateY = positionY;
 								}
+								else if (board->getNode(positionX, positionY)->getData() == "")
+								{
+									if (lettersPlayerTwo.searchNode(tile) != nullptr)
+									{
+										auxLetters.addLastNode(lettersPlayerTwo.searchNode(tile)->getLetter());
+										lettersPlayerTwo.deleteSpecificNode(tile);
+
+										word += tile;
+										postions[word.length() - 1][0] = positionX;
+										postions[word.length() - 1][1] = positionY;
+										coordinateX = positionX;
+										coordinateY = positionY;
+									}
+									else
+									{
+										cout << "\t Ficha no encontrada: " << tile;
+									}
+								}
 								else
 								{
 									cout << "\t No se puede remplazar la letra";
@@ -499,7 +535,7 @@ void Menu::startGame()
 							if (board->getNode(postions[i][0], postions[i][1])->getData() == "")
 							{
 								board->getNode(postions[i][0], postions[i][1])->setData(cW);
-								playerOneScore += board->getNode(postions[i][0], postions[i][1])->getScore() * auxLetters.getFirstNode()->getLetter()->getScore();
+								playerTwoScore += board->getNode(postions[i][0], postions[i][1])->getScore() * auxLetters.getFirstNode()->getLetter()->getScore();
 							}
 						}
 						else
