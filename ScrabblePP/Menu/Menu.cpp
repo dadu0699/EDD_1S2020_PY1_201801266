@@ -360,12 +360,10 @@ void Menu::startGame()
 						{
 							board->addNode(postions[i][0], postions[i][1], 1, cW);
 							playerOneScore += auxLetters.getFirstNode()->getLetter()->getScore();
-						}
-						if (!auxLetters.isEmpty())
-						{
+
 							lettersPlayerOne.addLastNode(letters->pop()->getLetter());
+							auxLetters.deleteFirstNode();
 						}
-						auxLetters.deleteFirstNode();
 					}
 					board->report();
 				}
@@ -508,12 +506,9 @@ void Menu::startGame()
 						{
 							board->addNode(postions[i][0], postions[i][1], 1, cW);
 							playerTwoScore += auxLetters.getFirstNode()->getLetter()->getScore();
-						}
-						if (!auxLetters.isEmpty())
-						{
 							lettersPlayerTwo.addLastNode(letters->pop()->getLetter());
+							auxLetters.deleteFirstNode();
 						}
-						auxLetters.deleteFirstNode();
 					}
 					board->report();
 				}
